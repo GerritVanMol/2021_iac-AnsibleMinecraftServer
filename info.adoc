@@ -1,0 +1,17 @@
+= Ansible Workshop
+
+
+== Een overzicht
+
+=== Deze workshop wordt opgebouwd door team 4
+Dit team bestaat uit:
+
+*Gerrit Van Mol* +
+*Joseph Mampaey* +
+*Lars De Schrijver* +
+*Thomas Vander Bruggen* +
+*Lucas De Boeck*
+
+=== Hier komt een overzicht van ons onderwerp
+
+Momenteel moet dit nog besproken worden
