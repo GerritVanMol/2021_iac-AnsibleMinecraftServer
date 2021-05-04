@@ -28,9 +28,3 @@ Hierdoor wou ik zeker iets kiezen dat ik nog niet kende. Door een project te mak
 === Hier komt een overzicht van ons onderwerp
 
 Een Minecraft server deployen met Ansible.
-
-==== benodigdheden
-
-* een computer
-
-* Ansible
