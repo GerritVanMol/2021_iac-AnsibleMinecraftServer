@@ -4,13 +4,26 @@
 == Een overzicht
 
 === Deze workshop wordt opgebouwd door team 4
-Dit team bestaat uit:
+==== Dit team bestaat uit:
 
-*Gerrit Van Mol* +
-*Joseph Mampaey* +
 *Lars De Schrijver* +
 *Thomas Vander Bruggen* +
-*Lucas De Boeck*
+*Lucas De Boeck* +
+*Gerrit Van Mol* +
+*Joseph Mampaey* +
+
+==== Onze motivatie
+
+*Lars*: De reden dat ik gekozen heb voor het Ansible project in het vak ‘infrastructure as code’ is door de vele mogelijkheden die deze software ons aanbiedt. Het is een grote stap naar automatisatie door middel van gebruik te maken van de vele toepassingen. Met gebruik van de configuratie management en applicatie deployment tool kunnen zowel Unix als Windows systemen geconfigureerd worden. Graag zou ik zoveel mogelijk willen te weten komen over het onderwerp infrastructuur, vandaar leek dit een zeer sterke keuze. Een leuk iets om mee te nemen is dat het een goede voorbereiding is om het project in week 2 en 3.
+
+*Thomas*: Dit project sprak me aan omdat ik mijn kennis wil verreiken in de infrastructuur. Bij het leren van Ansible kan ik efficiënter leren werken aan de hand van automatisatie. Persoonlijk gezegd heb ik geen achtergrond met Ansible dus leek het een goede kans om er mij in te verdiepen. 
+
+*Lucas*: Van kinds af aan was infrastructuur mijn grootste passie in de wereld. Iedereen in mijn klasje wou astronaut worden of doktor. Maar het enige wat ik wou doen was code deployen op meerdere servers tegelijkertijd. Wie het kunnen weten dat jaren later ik het ook zou kunnen verwezelijken. Dit vak is als een droom die waarkomt.
+
+*Gerrit*: Ansible is nog onbekend voor mij, daarom heb ik het gekozen
+
+*Joseph*: Devops vindt ik een zeer boeiende tak van de IT. Ik wou zeer graag meer leren over het automatiseren binnen de infrastructuur.
+Hierdoor wou ik zeker iets kiezen dat ik nog niet kende. Door een project te maken met Ansible hoop ik hier goed mee overweg te kunnen.
 
 === Hier komt een overzicht van ons onderwerp
 
