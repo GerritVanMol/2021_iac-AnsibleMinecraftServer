@@ -1,0 +1,74 @@
+= MC server starten met Ansible
+
+== Intro
+Stappenplan:
+
+* Structuur opbouwen
+* Tasks toevoegen aan de role
+* Testen
+
+=== Eerst maken we de structuur voor ons project
+
+We werken in de map ansible-project
+----
+cd /home/student/ansible-project
+----
+De volgende stap is de role aanmaken
+----
+mkdir roles
+cd roles
+ansible-galaxy init mc_deployment
+cd ..
+----
+In deze stap maken we de play aan
+----
+touch mc_deployment.yml
+vim mc_deployment.yml
+----
+Nu gaan we beschrijven op welke host deze rol uitgevoerd zal worden.
+Met vim schrijven we volgend stuk in onze play: (verlaat vim met :wq om op te slaan)
+----
+---
+- name: Deploy MC server
+  hosts: server
+  become: true
+  role:
+    mc_deployment
+----
+Nu voegen we deze play toe aan ons playbook:
+----
+vim playbook.yml
+----
+----
+---
+- import_playbook: mc_deployment.yml
+----
+Onze structuur zou er op dit moment als volgt moeten uitzien:
+----
+playbook.yml
+mc_deployment.yml
+roles
+  mc_deployment
+----
+We testen even kort of onze opstelling vrij is van fouten:
+----
+ansible-playbook playbook.yml
+----
+
+=== Tasks toevoegen
+We navigeren met vim naar de task folder van onze role, hier kunnen we in main.yml onze tasks schrijven
+----
+vim roles/mc_deployment/task/main.yml
+----
+Onze eerste task is het updaten van de yum repository. Dit doen we zo:
+----
+---
+- name: Update yum
+  yum:
+    update_cache: yes
+    state: latest
+----
+Sla dit op en test even of dit werkt met het uitvoor commando
+----
+ansible-playbook playbook.yml
+----
