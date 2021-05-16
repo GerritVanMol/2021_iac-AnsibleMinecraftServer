@@ -83,3 +83,45 @@ image::https://enlace.be/commonPlay.PNG[image of play]
 De in de rol zullen tasks worden gedefinierd:
 
 image::https://enlace.be/commonRole.PNG[role structure]
+
+
+=== 4 Wat is een Inventory?
+In de inventory file worden alle link:https://nl.wikipedia.org/wiki/Node_(informatica)[nodes] tot een groep toegewezen en krijgen ze elk hun uniek ip adres mee. Op die is er een duidelijke verdeling en kunnen groepen (meerdere nodes) worden aangesproken in een zelfde play zonder dat we alle nodes nogmaals appart moeten gaan opsommen. Een inventory file kan opnieuw geschreven worden in `YAML` of `ini` fromaat. Al noemen we het belangrijkste bestand in de Ansible opstelling de "inventory", krijgt het in productie de naam `hosts`. Omdat we zoals eerder vermeld de nodes/hosts daar zullen vermelden, met welk ip elke host is gekoppeld en zeggen in welke groep ze zitten. Bij installatie van Ansible kan je de inventory standaard in `/etc/ansible/hosts` terugvinden. 
+
+Een basis inventory in `ini` formaat:
+[source, bash]
+----
+[all.hosts]
+mail.example.com=null
+
+[all.children.webservers.hosts]
+foo.example.com=null
+bar.example.com=null
+
+[all.children.dbservers.hosts]
+one.example.com=null
+two.example.com=null
+three.example.com=null
+----
+
+Een basis inventory in `YAML` formaat:
+[source, bash]
+----
+all:
+  hosts:
+    mail.example.com:
+  children:
+    webservers:
+      hosts:
+        foo.example.com:
+        bar.example.com:
+    dbservers:
+      hosts:
+        one.example.com:
+        two.example.com:
+        three.example.com:
+----
+
+Het formaat dat je uiteindelijk kiest is een persoonlijke voorkeur, beide formaten werken even goed. Om je een idee tegeven van hoe zo een groep of host moet worden aangesproken in een play kan je terug refereren naar (figuur 2) onder het key-word `hosts` kan men een aantal groep namen terug vinden. Deze groepen (nodes die onder deze groepen vallen) zullen worden beïnvloed door de instructies vermeld in de playbook tasks.
+
+Meer details over de inventory kan je terug vinden in de link:https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html[documentatie].
