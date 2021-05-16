@@ -69,3 +69,17 @@ ansible-project/            (hoofdmap)
 
 Meer info over mappen structuur en best practices in Ansible kan je link:https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#best-practices[hier] terug vinden.
 
+
+==== 3.1 Voorbeeld structuur (visualisatie)
+Playbook importeert plays: 
+
+image::https://enlace.be/playbookImports.PNG[playbook image]
+
+De geïmporteerde play zal op zijn beurt host(s) en role aanspreken:
+
+image::https://enlace.be/commonPlay.PNG[image of play]
+
+
+De in de rol zullen tasks worden gedefinierd:
+
+image::https://enlace.be/commonRole.PNG[role structure]
