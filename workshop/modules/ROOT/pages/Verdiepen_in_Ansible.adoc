@@ -18,5 +18,10 @@ TIP: **Een playbook uitvoeren kan men met `ansible-playbook naam_van_playbook.ym
 ==== 1.3 Wat is een play?
 Plays zijn elementen die `roles` verbinden met een host (server) waarop ze uitgevoerd moeten worden. Op die manier weet Ansible welke hosts er worden beïnvloed en hoe. Een play kan één of meerdere `tasks` bevatten.
 
+==== 1.4 Wat is een task?
+Wat zijn `tasks` dan nog? Een task is/doet eigenlijk niets meer dan een Ansible module aanspreken. Deze weet hoe dan ook niet waar of op welke host hij wordt opgeroepen. Maar zoals al vermeld is dat de play zijn taak.
+
+Standaard wordt elke taak op volgorde van definiëring uitgevoerd. Dit op elke machine dat werd vermeld door het `hosts` key-word. Eenmaal een taak is uitgevoerd op de doel machine(s) gaat Ansible door naar de volgende taak.
+Indien een taak faalt op een host, worden voor die bepaalde host geen taken meer uitgevoerd uit de playbook (om verdere conflicten te vermeiden).
 
 
