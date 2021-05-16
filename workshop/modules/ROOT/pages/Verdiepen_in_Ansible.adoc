@@ -33,4 +33,39 @@ Een rol is een appart deel in Ansible en wordt niet gedefinieerd in een palybook
 ==== 2.2 Handlers
 `Tasks` en `handlers` zijn eigenlijk bijna identiek. Het enige verschil met handlers is dat ze enkel worden uitgevoerd bij een oproep door het `notify` key-word. Hoe dan ook zal deze notify enkel worden doorgevoerd indien er veranderingen zijn waargenomen. Dit is bijvoorbeeld handig wanner men aanpassingen heeft gemaakt in de firewall service, en om deze aanpassingen door te voeren moet men de service herstarten.
 
+=== 3 Hirarchy/mappen structuur (overzicht)
+Om je een beeld te geven van een basis mappen structuur in Anisble kan je refereren naar onderstaande illustratie:
+
+
+[source, bash]
+----
+ansible-project/            (hoofdmap)
+├── group_vars/              (dir)
+├── host_vars/               (dir)
+├── roles/                   (dir)
+├  └──common/                (dir voorbeeld rol)
+├       ├──tasks/            (dir)
+├       ├   └──main.yml         
+├       ├──handlers/         (dir)
+├       ├   └──main.yml
+├       ├──templates/        (dir)
+├       ├   └──conf.j2         
+├       ├──files/            (dir)
+├       ├   └──voorbeeld.txt
+├       ├──vars/             (dir)
+├       ├   └──main.yml         
+├       ├──defaults/         (dir)
+├       ├   └──main.yml
+├       ├──meta/             (dir)
+├       ├   └──main.yml         
+├       ├──library/          (dir)
+├       ├──module_utils/     (dir)
+├       └──lookup_plugins/   (dir)
+├
+├── ansible.cfg              (ansible config file)
+├── hostsyml                 (hosts config file)
+└── playbooks                (playbook file(s))
+----
+
+Meer info over mappen structuur en best practices in Ansible kan je link:https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#best-practices[hier] terug vinden.
 
