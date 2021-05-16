@@ -15,4 +15,8 @@ De naam van een `playbook` is het enige dat kan worden opgeroepen in een command
 
 TIP: **Een playbook uitvoeren kan men met `ansible-playbook naam_van_playbook.yml`**
 
+==== 1.3 Wat is een play?
+Plays zijn elementen die `roles` verbinden met een host (server) waarop ze uitgevoerd moeten worden. Op die manier weet Ansible welke hosts er worden beïnvloed en hoe. Een play kan één of meerdere `tasks` bevatten.
+
+
 
