@@ -3,15 +3,47 @@
 == Intro
 Stappenplan:
 
+* Voorbereiding
 * Structuur opbouwen
 * Tasks toevoegen aan de role
 * Testen
 
-=== Eerst maken we de structuur voor ons project
+=== Voorbereiding
+We loggen in via ssh op onze host controller dit zal de ubuntu machine zijn.
+Eens aangelogd zullen we de machine up to date brengen, dit doen we door middel van volgende commando's:
+----
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install vim
+----
+
+=== Structuur opbouwen
 
 We werken in de map ansible-project
 ----
 cd /home/student/ansible-project
+----
+Eerst maken we de inventory file aan voor onze infrastructuur
+----
+touch inventory.yml
+----
+----
+vim inventory.yml
+----
+Hierin beschrijven we de infrastructuur en hun IP's
+Om te beginnen werken in een vim
+----
+---
+  all:
+    children:
+      controlhosts:
+        hosts:
+          controlnode1:
+            ansible_host: x.x.x.x
+      mcservers:
+        hosts:
+          server:
+            ansible_host: x.x.x.x
 ----
 De volgende stap is de role aanmaken
 ----
