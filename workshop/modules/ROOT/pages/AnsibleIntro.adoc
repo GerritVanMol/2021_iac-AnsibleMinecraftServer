@@ -49,5 +49,5 @@ Om eenvoudig configuraties te maken gebruikt ansible 'playbooks'. In deze playbo
 
 Op de onderstaande foto kan je zien hoe de playbooks en inventory files samen werken. Ansible leest de inventory en paybooks en voert dan via een ssh verbinding de nodige taken uit. 
 
-image:./images/automation.png[]
+image:./images/automation.png.png[]
 
