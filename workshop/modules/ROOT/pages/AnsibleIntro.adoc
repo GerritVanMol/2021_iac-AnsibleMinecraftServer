@@ -8,7 +8,28 @@ Het kan gebruikt worden om bijvoorbeeld software installeren en configureren. Oo
 
 Een groot bij ansible is dat er operaties op verschillende machines tegegelijk kunnen uitgevoerd worden. Wat betekend dat je niet telkens dezelfde stappen manueel moet doen. 
 
-Ansible werkt met invetory bestanden waar je kan een lijst kan maken van alle systemen waarop je zou willen werken. Daarna maak je een lijst van operaties die ansible moet uitvoeren op die machines. 
+
+=== Hoe werkt het? 
+
+Ansible maakt gebruik van inventory files in YAML formaat waar je al de host systemen waarop je configuraties wilt uitvoeren kan vermelden. In deze bestanden komen dus alle namen en ip adressen. Je kan op deze manier ook groepen van systemen maken. bv. Webservers
+
+[source, bash]
+----
+all:
+  hosts:
+    mail.example.com: 192.168.1.1
+  children:
+    webservers:
+      hosts:
+        foo.example.com: 192.168.1.2
+        bar.example.com: 192.168.1.3
+    dbservers:
+      hosts:
+        one.example.com: 192.168.1.4
+        two.example.com: 192.168.1.5
+        three.example.com: 192.168.6
+----
+
 
 image:./images/automation.png[]
 
