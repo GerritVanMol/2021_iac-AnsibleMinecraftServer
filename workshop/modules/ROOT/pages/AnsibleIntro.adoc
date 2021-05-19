@@ -1,1 +1,3 @@
 
+* Schema: +
+image:./images/ansible.jpg[]
