@@ -1,5 +1,5 @@
 image:./images/ansible.png[]
 
-= Project 1: Intro to Ansible
+=Intro to Ansible
 Lucas De Boeck <lucas.deboeck@odisee.student.be>
 
