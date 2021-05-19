@@ -22,3 +22,6 @@ Een virtuele machine is een virtueel apparaat binnen een fysieke computer. Binne
 
 Een virtuele machine is altijd geïsoleerd van de rest van het systeem. De software die erop geïnstalleerd is opereert dus onafhankelijk van de host. Vandaar dat een virtual machine vaak gebruikt wordt om meer risicovolle acties of testen uit te voeren. Bedrijven gebruiken een virtual machine om nieuwe of eigen ontwikkelde programma’s te testen in een veilige omgeving, of om gegevens te herstellen die aangetast zijn door virussen. Ook voor het maken van veiligheidskopieën kan een virtual machine worden ingezet.
 
+== Wat is Ansible?
+
+Ansible is een tool waar je IT-processen mee kunt automatiseren. Het is een DevOps tool waarin de gehele levenscyclus van een applicatie gemakkelijk geautomatiseerd wordt. De focus van deze tool ligt op een eenvoudige samenwerking. Dit betekent dat DevOps-teams veel makkelijkere en  complexere implementaties kunnen beheren en zo een hogere productiviteit behalen.
