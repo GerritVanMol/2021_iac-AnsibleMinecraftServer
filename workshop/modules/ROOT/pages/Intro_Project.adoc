@@ -25,3 +25,7 @@ Een virtuele machine is altijd geïsoleerd van de rest van het systeem. De softw
 == Wat is Ansible?
 
 Ansible is een tool waar je IT-processen mee kunt automatiseren. Het is een DevOps tool waarin de gehele levenscyclus van een applicatie gemakkelijk geautomatiseerd wordt. De focus van deze tool ligt op een eenvoudige samenwerking. Dit betekent dat DevOps-teams veel makkelijkere en  complexere implementaties kunnen beheren en zo een hogere productiviteit behalen.
+
+== En nu, aan de slag!
+
+Nu we de voorbereidingen hebben getroffen en we beschikken over de nodige kennis, over hoe het project zal worden opgebouwd, kunnen we aan de slag gaan. We zullen jullie aan de hand van verschillende hoofdstukken uitleggen hoe we juist een Minecraft server kunnen realiseren aan de hand van een virtuele machine die gebruikt maakt van Ansible. 
