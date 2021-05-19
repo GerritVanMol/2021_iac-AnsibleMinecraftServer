@@ -1,6 +1,6 @@
 = MC server starten met Ansible
 
-== Intro
+== Overzicht van dit labo
 Stappenplan:
 
 * Voorbereiding
@@ -10,28 +10,41 @@ Stappenplan:
 
 === Voorbereiding
 We loggen in via ssh op onze host controller dit zal de ubuntu machine zijn.
+----
+ssh student@x.x.x.x
+----
 Eens aangelogd zullen we de machine up to date brengen, dit doen we door middel van volgende commando's:
 ----
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 sudo apt install vim
+----
+Nu gaan we Ansible zelf installeren via volgende commands:
+----
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible -y
+----
+Ansible heeft ook nog een python interpreter nodig om de modules te kunnen uitvoeren:
+----
+sudo apt-get install python3 -y
 ----
 
 === Structuur opbouwen
 
-We werken in de map ansible-project
+We maken de map ansible-project in onze home folder, al onze files komen in deze map:
 ----
-cd /home/student/ansible-project
+cd ~
+mkdir ansible-project
+cd ansible-project
 ----
 Eerst maken we de inventory file aan voor onze infrastructuur
 ----
 touch inventory.yml
-----
-----
 vim inventory.yml
 ----
-Hierin beschrijven we de infrastructuur en hun IP's
-Om te beginnen werken in een vim
+Hierin beschrijven we de infrastructuur en hun IP's.
+Om te beginnen werken in vim moeten we op insert drukken dat is de 'i' toets. 
 ----
 ---
   all:
@@ -45,20 +58,22 @@ Om te beginnen werken in een vim
           server:
             ansible_host: x.x.x.x
 ----
-De volgende stap is de role aanmaken
+Om het aangepaste bestand op te slaan en af te sluiten met vim gebruiken we ":wq".
+De volgende stap is de role aanmaken. We maken een subfolder genaamd roles met daarin een role:
 ----
 mkdir roles
 cd roles
 ansible-galaxy init mc_deployment
 cd ..
 ----
+Nu zouden we terug in de werkmap ansible-project moeten zitten.
 In deze stap maken we de play aan
 ----
 touch mc_deployment.yml
 vim mc_deployment.yml
 ----
 Nu gaan we beschrijven op welke host deze rol uitgevoerd zal worden.
-Met vim schrijven we volgend stuk in onze play: (verlaat vim met :wq om op te slaan)
+Met vim schrijven we volgend stuk in onze play: (Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
 ----
 ---
 - name: Deploy MC server
@@ -67,15 +82,17 @@ Met vim schrijven we volgend stuk in onze play: (verlaat vim met :wq om op te sl
   role:
     mc_deployment
 ----
-Nu voegen we deze play toe aan ons playbook:
+Nu kunnen we deze play gaan toevoegen in een playbook. Eerst maken we een nieuw playbook en we schrijven daarin de play: 
+(Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
 ----
+touch playbook.yml
 vim playbook.yml
 ----
 ----
 ---
 - import_playbook: mc_deployment.yml
 ----
-Onze structuur zou er op dit moment als volgt moeten uitzien:
+Onze structuur zou er op dit moment als volgt moeten uitzien: (controleerbaar met ls)
 ----
 playbook.yml
 mc_deployment.yml
@@ -86,6 +103,7 @@ We testen even kort of onze opstelling vrij is van fouten:
 ----
 ansible-playbook playbook.yml
 ----
+Als de playbook uitgevoerd wordt zonder fouten is dit een succes! Als er fouten zijn meldt dit even en dan komen we kijken.
 
 === Tasks toevoegen
 We navigeren met vim naar de task folder van onze role, hier kunnen we in main.yml onze tasks schrijven
