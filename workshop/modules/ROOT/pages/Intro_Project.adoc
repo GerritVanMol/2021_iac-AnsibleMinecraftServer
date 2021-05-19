@@ -1,3 +1,5 @@
 = Een Minecraft server met Ansible
+
 == Inleiding
+
 Wie van jullie heeft hier ooit al Minecraft gespeeld? Dat dacht ik ook, bijna iedereen kent het spel maar voor diegene die het niet kennen zal ik even wat uitleg geven. In het spel kan men in een uitgestrekt gebied kubusvormige objecten plaatsen op een rooster. Het spel genereert automatisch een omgeving met grondstoffen, tegenstanders, dieren, grot- en tunnelsystemen, bergformaties en meren. De speler heeft een eigen avatar, waarmee hij de omgeving actief kan aanpassen. Minecraft is één van de meeste verkochte games ooit. Met een spelersbasis van ongeveer 140 miljoen actieve spelers is dit spel één van de grootste games die ooit heeft bestaan. Iedereen is vrij om een server te maken met als resultaat dat er maar liefst duizenden servers bestaan waar spelers vrij kunnen deelnemen om met mensen van over de hele wereld samen te spelen.
