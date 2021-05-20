@@ -1,0 +1,193 @@
+:numbered:
+:toc:
+:toc: preamble
+:toc: left
+:toc-title: Inhoudstafel
+:icons: font
+:experimental:
+= Een bredere kijk op Ansible
+
+==== Werken met playbooks, plays en tasks
+Ansible playbooks zijn kort samengevat voorgeschreven code in een bestand. Vaak zijn dit `.yml` of `.ini` bestanden. Playbooks zorgen er voor dat bepaalde taken of code niet steeds opnieuw moeten geschreven worden om herhalende taken uit te voeren op één of meerdere machines. Het schrijven van `YAML` bestanden gebeurt met indentatie net zoals de programmeer taal python, meer over de `YAML` syntax kan je link:https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started/[hier] terug vinden.
+
+image::https://memegenerator.net/img/instances/65610099.jpg[ansible-meme]
+
+==== Wat is een playbook
+Playbooks zijn scripts die bestaan uit een oplijsting van commando's. Deze commando's worden doorgestuurd naar externe machines. Ansible playbooks bieden flexibiliteit en simpliciteit voor het configureren van één of meerdere machines. Op die manier moet men niet steeds handmatig herhalende taken uitvoeren. Men kan de inhoud van een playbook eerder aanzien als een configuratie opstlling dan dat ze geschreven is in een programmeertaal.
+
+Maar wat zit er nu echt in een playbook?
+Een `playbook` is eigenlijk een lijst van `plays`. Lijsten staan het hoogste in de hirachy van een playbook. Een play wordt gedefinierd met `import_playbook`, deze importeert een lijst van plays afkomstig uit een ander bestand (meestal een rol). De import zorgt er voor dat de werk omgeving overzichtelijk blijft. Het is ook mogelijk om meteen alle plays in playbook te defineren maar zoals al eerder vermeld is dit on overzichtelijk. Een playbook bestaat dus uit meerdere `plays` en een `play` bestaat op zijn beurt uit meerdere `tasks`.
+
+
+
+De naam van een `playbook` is het enige dat kan worden opgeroepen in een commando met het `ansible-playbook` key-word. 
+
+TIP: **Een playbook uitvoeren kan men met `ansible-playbook naam_van_playbook.yml`**
+
+
+
+==== Wat is een play
+Plays zijn elementen die `roles` verbinden met een host (server) waarop ze uitgevoerd moeten worden. Op die manier weet Ansible welke hosts er worden beïnvloed en hoe. Een play kan één of meerdere `tasks` bevatten.
+
+
+
+==== Wat is een task
+Wat zijn `tasks` dan nog? Een task is/doet eigenlijk niets meer dan een Ansible module aanspreken. Deze weet hoe dan ook niet waar of op welke host hij wordt opgeroepen. Maar zoals al vermeld is dat de play zijn taak.
+
+Standaard wordt elke taak op volgorde van definiëring uitgevoerd. Dit op elke machine dat werd vermeld door het `hosts` key-word. Eenmaal een taak is uitgevoerd op de doel machine(s) gaat Ansible door naar de volgende taak.
+Indien een taak faalt op een host, worden voor die bepaalde host geen taken meer uitgevoerd uit de playbook (om verdere conflicten te vermeiden).
+
+
+=== Roles en handlers
+
+==== Roles
+Een rol is een appart deel in Ansible en wordt niet gedefinieerd in een palybook. Roles hebben hun eigen sub-mappen onder de map `roles`. Omdat in meest van de gevallen niet alle `hosts` dezelfde configuratie nodig hebben is het vaak beter om deze op te splitsen. Hier komen `roles` in de kijker. Zij zorgen ervoor dat alles geordend blijft en dat elk deel bijvoorbeeld variabelen (`vars`) in een apart mapje worden gedefinieerd. Als men bijvoorbeeld een `task` uitvoert zal er automatisch worden gezocht achter de variabele in het bestand van de `vars` map. Zoals een `play` definieert een rol de `tasks` en `handlers`. Hoe dan ook, rollen bepalen niet op welke hosts de rol zal worden uitgevoerd. Een referentie naar een rol zal dus steeds plaats vinden in een play.
+
+==== Handlers
+`Tasks` en `handlers` zijn eigenlijk bijna identiek. Het enige verschil met handlers is dat ze enkel worden uitgevoerd bij een oproep door het `notify` key-word. Hoe dan ook zal deze notify enkel worden doorgevoerd indien er veranderingen zijn waargenomen. Dit is bijvoorbeeld handig wanner men aanpassingen heeft gemaakt in de firewall service, en om deze aanpassingen door te voeren moet men de service herstarten.
+
+=== Hirarchy/mappen structuur
+Om je een beeld te geven van een basis mappen structuur in Anisble kan je refereren naar onderstaande illustratie:
+
+
+[source, bash]
+----
+ansible-project/            (hoofdmap)
+├── group_vars/              (dir)
+├── host_vars/               (dir)
+├── roles/                   (dir)
+├  └──common/                (dir voorbeeld rol)
+├       ├──tasks/            (dir)
+├       ├   └──main.yml         
+├       ├──handlers/         (dir)
+├       ├   └──main.yml
+├       ├──templates/        (dir)
+├       ├   └──conf.j2         
+├       ├──files/            (dir)
+├       ├   └──voorbeeld.txt
+├       ├──vars/             (dir)
+├       ├   └──main.yml         
+├       ├──defaults/         (dir)
+├       ├   └──main.yml
+├       ├──meta/             (dir)
+├       ├   └──main.yml         
+├       ├──library/          (dir)
+├       ├──module_utils/     (dir)
+├       └──lookup_plugins/   (dir)
+├
+├── ansible.cfg              (ansible config file)
+├── hostsyml                 (hosts config file)
+└── playbooks                (playbook file(s))
+----
+
+Meer info over mappen structuur en best practices in Ansible kan je link:https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#best-practices[hier] terug vinden.
+
+
+==== Voorbeeld structuur (visualisatie)
+Playbook bevat plays: 
+
+Elke play zal op zijn beurt host(s) en role aanspreken:
+
+image::https://enlace.be/commonPlay.PNG[image of play]
+Figuur 1: Playbook met play voorbeeld
+
+De in de rol zullen tasks worden gedefinierd:
+
+image::https://enlace.be/commonRole.PNG[role structure]
+Figuur 2: playbook rollen structuur
+
+
+=== Wat is een Inventory
+In de inventory file worden alle link:https://nl.wikipedia.org/wiki/Node_(informatica)[nodes] tot een groep toegewezen en krijgen ze elk hun uniek ip adres mee. Op die is er een duidelijke verdeling en kunnen groepen (meerdere nodes) worden aangesproken in een zelfde play zonder dat we alle nodes nogmaals appart moeten gaan opsommen. Een inventory file kan opnieuw geschreven worden in `YAML` of `ini` fromaat. Al noemen we het belangrijkste bestand in de Ansible opstelling de "inventory", krijgt het in productie de naam `hosts`. Omdat we zoals eerder vermeld de nodes/hosts daar zullen vermelden, met welk ip elke host is gekoppeld en zeggen in welke groep ze zitten. Bij installatie van Ansible kan je de inventory standaard in `/etc/ansible/hosts` terugvinden. 
+
+Een basis inventory in `ini` formaat:
+[source, bash, indent=1]
+----
+[all.hosts]
+mail.example.com=null
+
+[all.children.webservers.hosts]
+foo.example.com=null
+bar.example.com=null
+
+[all.children.webservers.vars]
+ansible_user=GEBRUIKER
+ansible_password=PASSWORD
+ansible_connection=ssh
+
+[all.children.dbservers.hosts]
+one.example.com=null
+two.example.com=null
+three.example.com=null
+
+[all.children.dbservers.vars]
+ansible_user=GEBRUIKER
+ansible_password=PASSWORD
+ansible_connection=ssh
+
+[vars]
+ansible_port=22
+----
+
+Een basis inventory in `YAML` formaat:
+
+[source, bash, indent=1]
+----
+---
+all:
+  hosts:
+    mail.example.com:
+  children:
+    webservers:
+      hosts:
+        foo.example.com:
+        bar.example.com:
+      vars:
+          ansible_user: GEBRUIKER
+          ansible_password: PASSWORD
+          ansible_connection: ssh
+    dbservers:
+      hosts:
+        one.example.com:
+        two.example.com:
+        three.example.com:
+      vars:
+          ansible_user: GEBRUIKER
+          ansible_password: PASSWORD
+          ansible_connection: ssh
+  vars:
+    ansible_port: 22
+----
+
+Het formaat dat je uiteindelijk kiest is een persoonlijke voorkeur, beide formaten werken even goed. Om je een idee tegeven van hoe zo een groep of host moet worden aangesproken in een play kan je terug refereren naar (figuur 2) onder het key-word `hosts` kan men een aantal groep namen terug vinden. Deze groepen (nodes die onder deze groepen vallen) zullen worden beïnvloed door de instructies vermeld in de playbook tasks.
+
+IMPORTANT: `YAML` files beginnen steeds met 3 dashes "`---`". De indentatie bepaald de hiërarchy, alsook is het belangrijk om te weten dat YAML files gevoelig zijn op een spaties (teveel of te weinig kan fouten geven). Tabs mogen gebruikt worden maar zijn minder betrouwbaar. 
+
+Meer details over de inventory kan je terug vinden in de link:https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html[documentatie].
+
+=== Mini cheat sheet
+
+
+image::https://enlace.be/ansible_cheat-sheet.PNG[afbeelding ansible cheat-sheet]
+
+
+Een meer uitgebreide cheat sheet vindt je link:https://www.digitalocean.com/community/cheatsheets/how-to-use-ansible-cheat-sheet-guide[hier].
+
+TIP: Als de Linux omgeving nog nieuw of onbekend is voor jou kan je altijd link:https://www.guru99.com/linux-commands-cheat-sheet.html[deze] Linux cheat sheet raadplegen. 
+
+
+link:AnsibleIntro.adoc[Terug]
+
+link:deployingMC.adoc[Volgende]
+
+
+
+
+'''
+(C) Gebaseerd op de informatie van:
+
+link:https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook#:~:text=An%20Ansible%C2%AE%20playbook%20is,make%20up%20an%20Ansible%20inventory.[Red Hat - Inventory documentation]
+
+link:https://www.guru99.com/ansible-tutorial.html[guru99 - Ansible for beginners]
+
+link:https://devops.stackexchange.com/questions/9832/ansible-whats-the-difference-between-task-role-play-and-playbook?newreg=172f1db84ee94cb493f95b4b631ae148[Stackexchange - tasks, play, roles, playbook]
