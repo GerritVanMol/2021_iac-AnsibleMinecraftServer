@@ -3,10 +3,10 @@ image:./images/ansible.png[]
 = Intro to Ansible
 Lucas De Boeck <lucas.deboeck@odisee.student.be>
 
-Ansible is software die het mogelijk maakt bepaalde taken te automatiseren op servers, vm's en in cloud omgevingen. 
+Ansible is software die het mogelijk maakt bepaalde taken te automatiseren op servers, VM's en in cloud omgevingen. 
 Het kan gebruikt worden om bijvoorbeeld software installeren en configureren. Ook kan het een netwerk configureren en bepaalde services deployen. 
 
-Een groot bij ansible is dat er operaties op verschillende machines tegegelijk kunnen uitgevoerd worden. Wat betekend dat je niet telkens dezelfde stappen manueel moet doen. 
+Een groot bij ansible is dat er operaties op verschillende machines tegelijk kunnen uitgevoerd worden. Wat betekend dat je niet telkens dezelfde stappen manueel moet doen. 
 
 
 === 1. Hoe werkt het? 
