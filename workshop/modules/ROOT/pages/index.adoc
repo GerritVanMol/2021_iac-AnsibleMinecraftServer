@@ -12,9 +12,9 @@ En omdat VM's onafhankelijk van elkaar zijn, zijn ze ook zeer draagbaar. U kunt 
 
 Vanwege hun flexibiliteit en portabiliteit bieden virtuele machines veel voordelen, zoals:
 
-*Apps maken en implementeren in de cloud.
-*Uitproberen van een nieuw besturingssysteem (OS), waaronder bètaversies.
-*Een nieuwe omgeving installeren, zodat ontwikkelaars eenvoudiger en sneller ontwikkel- en testscenario's kunnen uitvoeren.
-*Back-ups maken van uw bestaande besturingssysteem.
-*Toegang tot door virussen geïnfecteerde gegevens of het uitvoeren van een oude toepassing door een ouder besturingssysteem te installeren.
-*Het uitvoeren van software of apps op besturingssystemen waarvoor deze oorspronkelijk niet waren bedoeld.
+* Apps maken en implementeren in de cloud.
+* Uitproberen van een nieuw besturingssysteem (OS), waaronder bètaversies.
+* Een nieuwe omgeving installeren, zodat ontwikkelaars eenvoudiger en sneller ontwikkel- en testscenario's kunnen uitvoeren.
+* Back-ups maken van uw bestaande besturingssysteem.
+* Toegang tot door virussen geïnfecteerde gegevens of het uitvoeren van een oude toepassing door een ouder besturingssysteem te installeren.
+* Het uitvoeren van software of apps op besturingssystemen waarvoor deze oorspronkelijk niet waren bedoeld.
