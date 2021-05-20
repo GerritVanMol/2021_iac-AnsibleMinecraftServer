@@ -53,7 +53,7 @@ image:./images/linux.PNG[]
 
 Daarna selecteer je hoeveel Maximum disk size je wilt behouden. We laten het op de default staan Tot slot zie je een klein overzicht van alle configuraties dat je al hebt gedaan. Nu de vm is aangemaakt gaan we de VMDK toevoegen dit doen we door op de virtuele machine te klikken > edit virtual machine settings. Je komt dan op dit venstertje uit:
 
-image:./images/instellingen.png[]
+image:./images/instellingen.PNG[]
  
 Klik je op add > Hard Disk
 
