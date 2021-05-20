@@ -3,3 +3,8 @@
 == Wat is een virtuele machine? 
 
 We gaan nog is kort overlopen wat een virtuele machine precies is. Een virtuele machine, vaak kortweg een VM, is niet anders dan andere fysieke computers, zoals een laptop, een smartphone of een server. Het heeft een CPU, geheugen, schijven om uw bestanden op te slaan en kan indien nodig verbinding maken met internet. Hoewel de onderdelen waaruit uw computer bestaat (hardware) fysiek en tastbaar zijn, worden VM's vaak gezien als virtuele computers of door software gedefinieerde computers binnen fysieke servers, die alleen bestaan uit code.
+
+== Hoe werkt een virtuele machine?
+
+Virtualisatie is het proces van het maken van een op software gebaseerde, of virtuele versie van een computer, met toegewezen aantallen CPU, geheugen en opslag die is 'geleend' van een fysieke hostcomputer (zoals uw pc) en/of een externe server, zoals een server in het datacentrum van een cloudprovider. Een virtuele machine is een computerbestand (meestal een installatiekopie genoemd), dat zich als echte computer gedraagt. Het kan in een venster worden uitgevoerd als een afzonderlijke computeromgeving, vaak om een ander besturingssysteem uit te voeren, of kan zelfs functioneren als de volledige computerervaring van de gebruiker, zoals gebruikelijk op de werkcomputers van een groot aantal personen. De virtuele machine wordt gepartitioneerd van de rest van het systeem, wat inhoudt dat de software binnen een VM niet kan conflicteren met het primaire besturingssysteem van de hostcomputer.
+
