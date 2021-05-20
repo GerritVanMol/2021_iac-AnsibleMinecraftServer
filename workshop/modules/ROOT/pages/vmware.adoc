@@ -36,3 +36,8 @@ Hier volgen enkele manieren waarop virtuele machines worden gebruikt:
 * Back-ups maken van uw bestaande besturingssysteem.
 * Toegang tot door virussen geïnfecteerde gegevens of het uitvoeren van een oude toepassing door een ouder besturingssysteem te installeren.
 * Het uitvoeren van software of apps op besturingssystemen waarvoor deze oorspronkelijk niet waren bedoeld.
+
+== vmware installeren 
+Nu gaan we jullie een kleine tutorial geven om je start klaar te maken voor onze workshop! Je surft naar vmware.com -> products-> workstation-player -> workstation-player-evaluation. (https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html) Eens je dat hebt gedaan zie je de laatste versie van vmware staan. Vervolgens klik je op de juiste download link in ons geval is dit “Try Workstation 16.0 Player for Windows”. 
+
+Na het downloaden opent het automatisch de VMware setup, je klikt op next. Daarna accepteer je de License en blijf je op next klikken tot en met je op Install komt. Hier ga je klikken op installeren van de VMware en uiteindelijk op finish, de VMware is nu succesvol geïnstalleerd. Tot slot start je de VMware op en klik je op het eerste namelijk Use VMware Workstation for free non-commercial use.
