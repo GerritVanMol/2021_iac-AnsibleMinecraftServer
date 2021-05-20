@@ -76,20 +76,17 @@ Meer info over mappen structuur en best practices in Ansible kan je link:https:/
 
 
 ==== 3.1 Voorbeeld structuur (visualisatie)
-Playbook importeert plays: 
+Playbook bevat plays: 
 
-image::https://enlace.be/playbookImports.PNG[playbook image]
-Figuur 1: playbook voorbeeld
-
-De geïmporteerde play zal op zijn beurt host(s) en role aanspreken:
+Elke play zal op zijn beurt host(s) en role aanspreken:
 
 image::https://enlace.be/commonPlay.PNG[image of play]
-Figuur 2: play voorbeeld
+Figuur 1: Playbook met play voorbeeld
 
 De in de rol zullen tasks worden gedefinierd:
 
 image::https://enlace.be/commonRole.PNG[role structure]
-Figuur 3: playbook rollen structuur
+Figuur 2: playbook rollen structuur
 
 
 === 4 Wat is een Inventory?
