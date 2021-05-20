@@ -45,11 +45,11 @@ Na het downloaden opent het automatisch de VMware setup, je klikt op next. Daarn
 == VMDK downloaden en 2 keer deployen
 Eerst en vooral gaan we de VDMK van school downloaden. Eens de VDMK is gedownload gaan we een virtuele machine aanmaken. Je klikt create a New Virtual Machine. Vervolgens klik je op de derde optie:
 
-image:./images/os-later.png[]
+image:./images/os-later.PNG[]
 
 Je selecteert als os Linux en als versie Ubuntu.
  
-image:./images/linux.png[]
+image:./images/linux.PNG[]
 
 Daarna selecteer je hoeveel Maximum disk size je wilt behouden. We laten het op de default staan Tot slot zie je een klein overzicht van alle configuraties dat je al hebt gedaan. Nu de vm is aangemaakt gaan we de VMDK toevoegen dit doen we door op de virtuele machine te klikken > edit virtual machine settings. Je komt dan op dit venstertje uit:
 
@@ -57,18 +57,18 @@ image:./images/instellingen.png[]
  
 Klik je op add > Hard Disk
 
-image:./images/hard-disk.png[]
+image:./images/hard-disk.PNG[]
  
 Er wordt aangeraden om SCSI te gebruiken deze gaan we dus behouden.
 
-image:./images/SCSI.png[]
+image:./images/SCSI.PNG[]
  
 Dit is een heel belangrijke stap we kiezen voor Use an existing virtual disk anders kunnen we onze VMDK niet gebruiken.
 
-image:./images/existing-disk.png[]
+image:./images/existing-disk.PNG[]
  
 Tot slot duiden we onze gedownloade VMDK aan en selecteren we die.
 
-image:./images/VMDK.png[]
+image:./images/VMDK.PNG[]
  
 Nu maak je nog een ubuntu vm aan op dezelfde manier zoals we daarnet deden.
