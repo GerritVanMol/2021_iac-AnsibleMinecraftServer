@@ -339,6 +339,7 @@ WantedBy=multi-user.target
 ----
 
 === Testen
+Dit stuk wordt aangevuld eens we de VMDK hebben. 
 
 link:Verdiepen_in_Ansible.adoc[Terug]
 
