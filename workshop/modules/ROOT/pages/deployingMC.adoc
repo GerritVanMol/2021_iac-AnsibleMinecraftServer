@@ -1,0 +1,346 @@
+:numbered:
+:toc:
+:toc: preamble
+:toc: left
+:toc-title: Inhoudstafel
+:icons: font
+:experimental:
+
+= MC server starten met Ansible
+
+== Overzicht van dit labo
+Stappenplan:
+
+* Voorbereiding
+* Structuur opbouwen
+* Tasks toevoegen aan de role
+* Nodige bestanden toevoegen
+* Testen
+
+=== Voorbereiding
+We loggen in via ssh op onze host controller dit zal de ubuntu machine zijn.
+----
+ssh student@x.x.x.x
+----
+Eens aangelogd zullen we de machine up to date brengen, dit doen we door middel van volgende commando's:
+----
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt install vim
+----
+Nu gaan we Ansible zelf installeren via volgende commands:
+----
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible -y
+----
+Ansible heeft ook nog een python interpreter nodig om de modules te kunnen uitvoeren:
+----
+sudo apt-get install python3 -y
+----
+
+=== Structuur opbouwen
+
+We maken de map ansible-project in onze home folder, al onze files komen in deze map:
+----
+cd ~
+mkdir ansible-project
+cd ansible-project
+----
+Eerst maken we de inventory file aan voor onze infrastructuur
+----
+touch inventory.yml
+vim inventory.yml
+----
+Hierin beschrijven we de infrastructuur en hun IP's.
+Om te beginnen werken in vim moeten we op insert drukken dat is de 'i' toets. 
+----
+---
+  all:
+    children:
+      controlhosts:
+        hosts:
+          controlnode1:
+            ansible_host: x.x.x.x
+      mcservers:
+        hosts:
+          server:
+            ansible_host: x.x.x.x
+----
+Om het aangepaste bestand op te slaan en af te sluiten met vim gebruiken we ":wq".
+De volgende stap is de role aanmaken. We maken een subfolder genaamd roles met daarin een role:
+----
+mkdir roles
+cd roles
+ansible-galaxy init mc_deployment
+cd ..
+----
+Nu zouden we terug in de werkmap ansible-project moeten zitten.
+In deze stap maken we de playbook aan
+Eerst maken we een nieuwe playbook en we schrijven daarin de play: 
+(Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
+----
+touch playbook.yml
+vim playbook.yml
+----
+----
+---
+- name: Deploy MC server
+  hosts: server
+  become: true
+  role:
+    mc_deployment
+----
+Onze structuur zou er op dit moment als volgt moeten uitzien: (controleerbaar met ls)
+----
+playbook.yml
+mc_deployment.yml
+roles
+  mc_deployment
+----
+We testen even kort of onze opstelling vrij is van fouten:
+----
+ansible-playbook playbook.yml
+----
+Als de playbook uitgevoerd wordt zonder fouten is dit een succes! Als er fouten zijn meldt dit even en dan komen we kijken.
+
+=== Tasks toevoegen
+We navigeren met vim naar de task folder van onze role, hier kunnen we in main.yml onze tasks schrijven
+----
+vim roles/mc_deployment/task/main.yml
+----
+Onze eerste task is het updaten van de yum repository. Dit doen we zo:
+----
+---
+- name: Update yum
+  yum:
+    update_cache: yes
+    state: latest
+----
+Sla dit op en test even of dit werkt met het uitvoer commando
+----
+ansible-playbook playbook.yml
+----
+Als dit correct werkt gaan we door naar de volgende tasks.
+In deze task installeren we java JKD
+----
+- name: java
+  package:
+    name: "openjdk-8-jdk"
+    state: present
+----
+Nu maken we een nieuwe user die MC zal beheren
+----
+- name: minecraft user
+  user:
+    name: minecraft
+    shell: /sbin/nologin
+----
+We maken de folders aan voor onze files
+----
+- name: minecraft dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0700'
+    owner: minecraft
+    group: minecraft
+  with_items:
+    - /opt/minecraft
+    - /opt/minecraft/backups
+    - /opt/minecraft/server
+    - /opt/minecraft/tmp
+----
+MC server download
+----
+- name: determine if jar downloaded
+  stat:
+    path: /opt/minecraft/server/server.jar
+  register: mc_jar
+
+- name: set mc_update = False when not defined
+  set_fact:
+    mc_update: False
+  when: mc_update is not defined
+
+- name: get jar download page if not downloaded or mc_update = True
+  get_url:
+    url: https://www.minecraft.net/en-us/download/server
+    dest: /opt/minecraft/tmp/mc_jar_url.html
+    mode: '0444'
+    owner: minecraft
+    group: minecraft
+  when: mc_jar.stat.exists == False or mc_update
+
+- name: determine jar url 
+  shell: awk -F '"' '/\.jar/ {print $2; exit}' /opt/minecraft/tmp/mc_jar_url.html
+  register: mc_jar_url
+  when: mc_jar.stat.exists == False or mc_update
+
+- name: get jar
+  get_url:
+    url: "{{ mc_jar_url.stdout }}"
+    dest: /opt/minecraft/server/server.jar
+    mode: '0444'
+    owner: minecraft
+    group: minecraft
+  when: mc_jar.stat.exists == False or mc_update
+----
+Werken met de eula
+----
+- name: determine if eula exists
+  stat:
+    path: /opt/minecraft/server/eula.txt
+  register: mc_eula_file
+
+- name: run jar when eula not exists (max 60 seconds)
+  shell:
+    chdir: /opt/minecraft/server/
+    cmd: timeout 60 java -Xmx1024M -Xms1024M -jar server.jar nogui
+  ignore_errors: yes
+  when: mc_eula_file.stat.exists == False
+
+- name: agree to eula
+  lineinfile:
+    path: /opt/minecraft/server/eula.txt
+    line: 'eula=true'
+    mode: '0444'
+    owner: minecraft
+    group: minecraft
+----
+Installeren als een systemd
+----
+- name: minecraft systemd unit file
+  template:
+    src: minecraft.service
+    dest: /etc/systemd/system/minecraft.service
+    mode: '0444'
+    owner: root
+    group: root
+----
+De properties van server instellen
+----
+- name: set server.properties file
+  template:
+    src: server.properties
+    dest: /opt/minecraft/server/server.properties
+    mode: '0600'
+    owner: minecraft
+    group: minecraft
+----
+De server opstarten
+----
+- name: start/enable minecraft service
+  systemd:
+    state: started
+    enabled: yes
+    daemon_reload: yes
+    name: minecraft
+  register: mc_started
+
+- name: restart minecraft service if not started previously or mc_update
+  systemd:
+    state: restarted
+	name: minecraft
+  when: mc_started.changed or mc_update
+----
+Backup (optioneel)
+----
+- name: backup script
+  copy:
+    src: backup.sh
+    dest: /usr/local/bin/minecraft_backup
+    mode: '0500'
+    owner: minecraft
+    group: minecraft
+
+- name: backup cron - every 3rd hour (8 times daily)
+  cron:
+    name: "minecraft backup"
+    minute: "0"
+    hour: "*/3"
+    state: present
+    user: minecraft
+    job: /usr/local/bin/minecraft_backup
+----
+
+=== Nodige bestanden toevoegen
+We keren terug naar onze werkmap 
+----
+cd ~/ansible-project
+----
+Onze server heeft nog een properties bestand nodig. Hieruit kunnen de instellingen van de server gehaald worden.
+We maken dus eerst een nieuw bestand aan met de nodige properties: (Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
+----
+vim server.properties
+----
+Daarin kopiëren we deze text:
+----
+view-distance=10
+max-build-height=256
+gamemode=creative
+server-port=25565
+query.port=25565
+allow-nether=true
+enable-command-block=false
+enable-rcon=false
+enable-query=false
+op-permission-level=4
+prevent-proxy-connections=false
+generator-settings=
+resource-pack=
+level-name=Minecraft World
+motd=Welcome to Minecraft!
+player-idle-timeout=0
+spawn-protection=16
+online-mode=true
+allow-flight=false
+force-gamemode=false
+hardcore=false
+white-list=false
+broadcast-console-to-ops=true
+pvp=false
+max-players=10
+generate-structures=true
+spawn-npcs=true
+spawn-animals=true
+snooper-enabled=true
+spawn-monsters=true
+difficulty=easy
+function-permission-level=2
+network-compression-threshold=256
+level-type=default
+max-tick-time=60000
+enforce-whitelist=false
+use-native-transport=true
+max-world-size=29999984
+----
+Nu voegen we op dezelfde wijze de service file toe. (Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
+----
+vim minecraft.service
+----
+----
+[Unit]
+Description=Minecraft Server
+After=network.target
+
+[Service]
+User=minecraft
+SuccessExitStatus=0 1
+ProtectHome=true
+ProtectSystem=full
+PrivateDevices=true
+NoNewPrivileges=true
+WorkingDirectory=/opt/minecraft/server
+ExecStart=/usr/bin/java -Xmx{{ mc_memory }}M -Xms{{ mc_memory }}M -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -jar server.jar nogui
+
+[Install]
+WantedBy=multi-user.target
+----
+
+=== Testen
+Dit stuk wordt aangevuld eens we de VMDK hebben. 
+
+link:Verdiepen_in_Ansible.adoc[Terug]
+
+link:index.adoc[Overzicht]
