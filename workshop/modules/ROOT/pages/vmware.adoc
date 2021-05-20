@@ -72,3 +72,21 @@ Tot slot duiden we onze gedownloade VMDK aan en selecteren we die.
 image:./images/VMDK.PNG[]
  
 Nu maak je nog een ubuntu vm aan op dezelfde manier zoals we daarnet deden.
+
+== Binnen de servers verbinding leggen met de server via ssh
+Nu onze vm’s goed zijn geconfigureerd kunnen we de vm’s opstarten. Je vult de juiste login gegevens in deze zijn namelijk:
+
+* Gebruikersnaam: ubuntu
+* Password: Azerty123
+
+Vervolgens ben je ingelogd op beide vm’s. We gaan 1 vm gebruiken als client en de andere als server. Het doel van dit gedeelte is om een ssh connectie te maken tussen de client en de server aan de hand van een keygen. Met het volgende commando maak je een public en private key aan op de server:
+
+image:./images/keygen.PNG[]
+ 
+Aan de hand van de public key gaan we van de server naar de client een ssh verbinding maken zonder dat we het password opnieuw moeten invoeren. De X.X.X.X moet je vervangen met het ipadress van de client.
+
+image:./images/ssh-copy.PNG[]
+ 
+Tot slot kunnen we de ssh verbinding testen tussen de client en de server zonder we een code moeten gebruiken.
+
+image:./images/ssh.PNG[]
