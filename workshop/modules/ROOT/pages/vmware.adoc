@@ -99,5 +99,6 @@ Tot slot kunnen we de ssh verbinding testen tussen de client en de server zonder
 
 image:./images/ssh.PNG[]
 
-link:Intro_Project.adoc[Terug]
+link:Intro_Project.adoc[Vorige]
+[.text-right]
 link:AnsibleIntro.adoc[Volgende]
