@@ -342,5 +342,5 @@ WantedBy=multi-user.target
 Dit stuk wordt aangevuld eens we de VMDK hebben. 
 
 link:Ansible_in_depth.adoc[Vorige]
-
+[.text-right]
 link:index.adoc[Overzicht]

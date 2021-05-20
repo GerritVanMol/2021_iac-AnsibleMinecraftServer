@@ -177,7 +177,7 @@ TIP: Als de Linux omgeving nog nieuw of onbekend is voor jou kan je altijd link:
 
 
 link:AnsibleIntro.adoc[Vorige]
-
+[.text-right]
 link:deployingMC.adoc[Volgende]
 
 
