@@ -1,0 +1,31 @@
+= Een Minecraft server met Ansible
+
+== Inleiding
+
+Wie van jullie heeft hier ooit al Minecraft gespeeld? Dat dacht ik ook, bijna iedereen kent het spel maar voor diegene die het niet kennen zal ik even wat uitleg geven. In het spel kan men in een uitgestrekt gebied kubusvormige objecten plaatsen op een rooster. Het spel genereert automatisch een omgeving met grondstoffen, tegenstanders, dieren, grot- en tunnelsystemen, bergformaties en meren. De speler heeft een eigen avatar, waarmee hij de omgeving actief kan aanpassen. Minecraft is één van de meeste verkochte games ooit. Met een spelersbasis van ongeveer 140 miljoen actieve spelers is dit spel één van de grootste games die ooit heeft bestaan. Iedereen is vrij om een server te maken met als resultaat dat er maar liefst duizenden servers bestaan waar spelers vrij kunnen deelnemen om met mensen van over de hele wereld samen te spelen.
+
+Ieder van deze spelers heeft de optie om zowel online als offline in een virtuele wereld te spelen waar de mogelijkheden oneindig groot zijn. Wanneer een speler kiest online te spelen komt deze terecht op een server. Iedere server heeft zijn eigen kenmerken: Het maximum aantal spelers, de regels die worden aangewezen, … . Doordat er duizenden servers zijn, zal er wel altijd een plaats zijn waar je terecht kunt. Maar hoe werkt zo een server? Of nog beter, hoe maak je zo een server? Wij zullen jullie de nodige kennis bezorgen zodat jullie zelf in staat zijn om een server op te stellen. 
+
+== Benodigdheden
+
+Een spel zoals Minecraft maken is niet zo eenvoudig als we zouden willen. Voor het opbouwen van een onze Minecraft server is er toch wel wat kennis nodig van computer infrastructuur. Er zijn ook wat benodigdheden om er voor te zorgen dat dit project kan gerealiseerd worden.
+
+Voor de realisatie van dit project zullen we nood hebben aan de nodige hardware waar onze virtuele machine zal op draaien. Op deze machine gaan we gebruik maken van de software genaamd Ansible. Deze zal ons de mogelijkheid geven om een Minecraft server te realiseren. 
+
+Aanvullend zal het operating systeem genaamd Linux nodig zijn om dit project te realiseren, de server zal namelijk op deze virtuele machine draaien. Linux is een gratis besturingssysteem dat een hoge vorm van personalisatie heeft. Door de grote community is van dit operating system veel documentatie online te vinden. 
+
+Aangezien Linux zo uitgebreid is, is het mogelijk om naar een specifieke versie te gaan zoeken. Aangezien wij een server willen laten draaien zullen we dus ook op zoek gaan naar een besturingssysteem dat ons hierbij helpt. Linux heeft een hele grote verzameling van verschillende besturingssystemen die kunnen gebruikt worden in speciale omgevingen. Specifiek gaan wij gebruik maken van Ubuntu. Ubuntu is een Linuxdistributie voor desktopcomputers, laptops, servers, tablets en smartphones. Dit besturingssysteem is beschikbaar in een groot aantal talen, waaronder het Nederlands. De makers van Ubuntu leggen de nadruk op gebruiksvriendelijkheid en toegankelijkheid voor gebruik thuis, op school en op het werk.
+
+== Wat zijn virtuele machines?
+
+Een virtuele machine is een virtueel apparaat binnen een fysieke computer. Binnen de fysieke computer wordt er als het ware een andere computer nagebootst. Op deze manier kunnen taken uitgevoerd worden die het originele operating system niet kan opvangen, of die beter gescheiden blijven van het basissysteem. Hierbij wordt het originele operating system de host genoemd, terwijl het operating system van de virtual machine de client heet. 
+
+Een virtuele machine is altijd geïsoleerd van de rest van het systeem. De software die erop geïnstalleerd is opereert dus onafhankelijk van de host. Vandaar dat een virtual machine vaak gebruikt wordt om meer risicovolle acties of testen uit te voeren. Bedrijven gebruiken een virtual machine om nieuwe of eigen ontwikkelde programma’s te testen in een veilige omgeving, of om gegevens te herstellen die aangetast zijn door virussen. Ook voor het maken van veiligheidskopieën kan een virtual machine worden ingezet.
+
+== Wat is Ansible?
+
+Ansible is een tool waar je IT-processen mee kunt automatiseren. Het is een DevOps tool waarin de gehele levenscyclus van een applicatie gemakkelijk geautomatiseerd wordt. De focus van deze tool ligt op een eenvoudige samenwerking. Dit betekent dat DevOps-teams veel makkelijkere en  complexere implementaties kunnen beheren en zo een hogere productiviteit behalen.
+
+== En nu, aan de slag!
+
+Nu we de voorbereidingen hebben getroffen en we beschikken over de nodige kennis, over hoe het project zal worden opgebouwd, kunnen we aan de slag gaan. We zullen jullie aan de hand van verschillende hoofdstukken uitleggen hoe we juist een Minecraft server kunnen realiseren aan de hand van een virtuele machine die gebruikt maakt van Ansible. 
