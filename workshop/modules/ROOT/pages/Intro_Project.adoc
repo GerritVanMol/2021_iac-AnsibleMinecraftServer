@@ -12,7 +12,7 @@ Een spel zoals Minecraft maken is niet zo eenvoudig als we zouden willen. Voor h
 
 Voor de realisatie van dit project zullen we nood hebben aan de nodige hardware waar onze virtuele machine zal op draaien. Op deze machine gaan we gebruik maken van de software genaamd Ansible. Deze zal ons de mogelijkheid geven om een Minecraft server te realiseren. 
 
-Aanvullend zal het operating systeem genaamd Linux nodig zijn om dit project te realiseren, de server zal namelijk dat op deze virtuele machine draaien. Linux is een gratis besturingssysteem dat een hoge vorm van personalisatie heeft. Door de grote community is van dit operating system veel documentatie online te vinden. 
+Aanvullend zal het operating systeem genaamd Linux nodig zijn om dit project te realiseren, de server zal namelijk op deze virtuele machine draaien. Linux is een gratis besturingssysteem dat een hoge vorm van personalisatie heeft. Door de grote community is van dit operating system veel documentatie online te vinden. 
 
 Aangezien Linux zo uitgebreid is, is het mogelijk om naar een specifieke versie te gaan zoeken. Aangezien wij een server willen laten draaien zullen we dus ook op zoek gaan naar een besturingssysteem dat ons hierbij helpt. Linux heeft een hele grote verzameling van verschillende besturingssystemen die kunnen gebruikt worden in speciale omgevingen. Specifiek gaan wij gebruik maken van Ubuntu. Ubuntu is een Linuxdistributie voor desktopcomputers, laptops, servers, tablets en smartphones. Dit besturingssysteem is beschikbaar in een groot aantal talen, waaronder het Nederlands. De makers van Ubuntu leggen de nadruk op gebruiksvriendelijkheid en toegankelijkheid voor gebruik thuis, op school en op het werk.
 
