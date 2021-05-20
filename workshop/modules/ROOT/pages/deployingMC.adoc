@@ -6,6 +6,7 @@ Stappenplan:
 * Voorbereiding
 * Structuur opbouwen
 * Tasks toevoegen aan de role
+* Nodige bestanden toevoegen
 * Testen
 
 === Voorbereiding
@@ -254,3 +255,79 @@ Backup (optioneel)
     user: minecraft
     job: /usr/local/bin/minecraft_backup
 ----
+
+=== Nodige bestanden toevoegen
+We keren terug naar onze werkmap 
+----
+cd ~/ansible-project
+----
+Onze server heeft nog een properties bestand nodig. Hieruit kunnen de instellingen van de server gehaald worden.
+We maken dus eerst een nieuw bestand aan met de nodige properties: (Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
+----
+vim server.properties
+----
+Daarin kopiëren we deze text:
+----
+view-distance=10
+max-build-height=256
+gamemode=creative
+server-port=25565
+query.port=25565
+allow-nether=true
+enable-command-block=false
+enable-rcon=false
+enable-query=false
+op-permission-level=4
+prevent-proxy-connections=false
+generator-settings=
+resource-pack=
+level-name=Minecraft World
+motd=Welcome to Minecraft!
+player-idle-timeout=0
+spawn-protection=16
+online-mode=true
+allow-flight=false
+force-gamemode=false
+hardcore=false
+white-list=false
+broadcast-console-to-ops=true
+pvp=false
+max-players=10
+generate-structures=true
+spawn-npcs=true
+spawn-animals=true
+snooper-enabled=true
+spawn-monsters=true
+difficulty=easy
+function-permission-level=2
+network-compression-threshold=256
+level-type=default
+max-tick-time=60000
+enforce-whitelist=false
+use-native-transport=true
+max-world-size=29999984
+----
+Nu voegen we op dezelfde wijze de service file toe. (Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
+----
+vim minecraft.service
+----
+----
+[Unit]
+Description=Minecraft Server
+After=network.target
+
+[Service]
+User=minecraft
+SuccessExitStatus=0 1
+ProtectHome=true
+ProtectSystem=full
+PrivateDevices=true
+NoNewPrivileges=true
+WorkingDirectory=/opt/minecraft/server
+ExecStart=/usr/bin/java -Xmx{{ mc_memory }}M -Xms{{ mc_memory }}M -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -jar server.jar nogui
+
+[Install]
+WantedBy=multi-user.target
+----
+
+=== Testen
