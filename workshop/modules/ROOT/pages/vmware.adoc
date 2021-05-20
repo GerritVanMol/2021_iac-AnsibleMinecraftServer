@@ -1,3 +1,11 @@
+:numbered:
+:toc:
+:toc: preamble
+:toc: left
+:toc-title: Inhoudstafel
+:icons: font
+:experimental:
+
 image:./images/vmware-logo.png[]
 
 = Wegwijs maken met de virtuele machines
@@ -90,3 +98,6 @@ image:./images/ssh-copy.PNG[]
 Tot slot kunnen we de ssh verbinding testen tussen de client en de server zonder we een code moeten gebruiken.
 
 image:./images/ssh.PNG[]
+
+link:Intro_Project.adoc[Terug]
+link:AnsibleIntro.adoc[Volgende]
