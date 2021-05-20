@@ -1,3 +1,11 @@
+:numbered:
+:toc:
+:toc: preamble
+:toc: left
+:toc-title: Inhoudstafel
+:icons: font
+:experimental:
+
 = Een Minecraft server met Ansible
 
 == Inleiding
@@ -29,3 +37,7 @@ Ansible is een tool waar je IT-processen mee kunt automatiseren. Het is een DevO
 == En nu, aan de slag!
 
 Nu we de voorbereidingen hebben getroffen en we beschikken over de nodige kennis, over hoe het project zal worden opgebouwd, kunnen we aan de slag gaan. We zullen jullie aan de hand van verschillende hoofdstukken uitleggen hoe we juist een Minecraft server kunnen realiseren aan de hand van een virtuele machine die gebruikt maakt van Ansible. 
+
+link:vmware.adoc[Volgende]
+
+link:index.adoc[Overzicht]

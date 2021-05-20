@@ -176,7 +176,7 @@ Een meer uitgebreide cheat sheet vindt je link:https://www.digitalocean.com/comm
 TIP: Als de Linux omgeving nog nieuw of onbekend is voor jou kan je altijd link:https://www.guru99.com/linux-commands-cheat-sheet.html[deze] Linux cheat sheet raadplegen. 
 
 
-link:AnsibleIntro.adoc[Terug]
+link:AnsibleIntro.adoc[Vorige]
 
 link:deployingMC.adoc[Volgende]
 

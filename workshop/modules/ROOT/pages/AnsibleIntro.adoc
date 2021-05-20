@@ -1,3 +1,10 @@
+:numbered:
+:toc:
+:toc: preamble
+:toc: left
+:toc-title: Inhoudstafel
+:icons: font
+:experimental:
 image:./images/ansible.png[]
 
 = Intro to Ansible
@@ -9,7 +16,7 @@ Het kan gebruikt worden om bijvoorbeeld software installeren en configureren. Oo
 Een groot bij ansible is dat er operaties op verschillende machines tegelijk kunnen uitgevoerd worden. Wat betekend dat je niet telkens dezelfde stappen manueel moet doen. 
 
 
-=== 1. Hoe werkt het? 
+== Hoe werkt het? 
 
 Ansible maakt gebruik van inventory files in YAML formaat waar je al de host systemen waarop je configuraties wilt uitvoeren kan vermelden. In deze bestanden komen dus alle namen en ip adressen. Je kan op deze manier ook groepen van systemen maken. bv. Webservers
 
@@ -50,4 +57,8 @@ Om eenvoudig configuraties te maken gebruikt ansible 'playbooks'. In deze playbo
 Op de onderstaande foto kan je zien hoe de playbooks en inventory files samen werken. Ansible leest de inventory en paybooks en voert dan via een ssh verbinding de nodige taken uit. 
 
 image:./images/automation.png.png[]
+
+link:vmware.adoc[Vorige]
+
+link:Ansible_in_depth.adoc[Volgende]
 
