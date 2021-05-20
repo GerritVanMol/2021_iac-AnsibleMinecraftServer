@@ -1,0 +1,53 @@
+image:./images/ansible.png[]
+
+= Intro to Ansible
+Lucas De Boeck <lucas.deboeck@odisee.student.be>
+
+Ansible is software die het mogelijk maakt bepaalde taken te automatiseren op servers, VM's en in cloud omgevingen. 
+Het kan gebruikt worden om bijvoorbeeld software installeren en configureren. Ook kan het een netwerk configureren en bepaalde services deployen. 
+
+Een groot bij ansible is dat er operaties op verschillende machines tegelijk kunnen uitgevoerd worden. Wat betekend dat je niet telkens dezelfde stappen manueel moet doen. 
+
+
+=== 1. Hoe werkt het? 
+
+Ansible maakt gebruik van inventory files in YAML formaat waar je al de host systemen waarop je configuraties wilt uitvoeren kan vermelden. In deze bestanden komen dus alle namen en ip adressen. Je kan op deze manier ook groepen van systemen maken. bv. Webservers
+
+[source, bash]
+----
+all:
+  hosts:
+    mail.example.com: 192.168.1.1
+  children:
+    webservers:
+      hosts:
+        foo.example.com: 192.168.1.2
+        bar.example.com: 192.168.1.3
+    dbservers:
+      hosts:
+        one.example.com: 192.168.1.4
+        two.example.com: 192.168.1.5
+        three.example.com: 192.168.6
+----
+
+
+Om eenvoudig configuraties te maken gebruikt ansible 'playbooks'. In deze playbooks komen dan een reeks van operaties die moeten uitgevoerd worden op de hosts die vermeld worden in de inventory file. 
+
+[source, bash]
+----
+---
+  - name: Playbook
+    hosts: webservers
+    become: yes
+    become_user: root
+    tasks:
+      - name: ensure apache is at the latest version
+        yum:
+          name: httpd
+          state: latest
+----
+
+Op de onderstaande foto kan je zien hoe de playbooks en inventory files samen werken. Ansible leest de inventory en paybooks en voert dan via een ssh verbinding de nodige taken uit. 
+
+image:./images/automation.png.png[]
+
