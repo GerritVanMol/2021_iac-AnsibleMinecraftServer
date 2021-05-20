@@ -1,3 +1,11 @@
+:numbered:
+:toc:
+:toc: preamble
+:toc: left
+:toc-title: Inhoudstafel
+:icons: font
+:experimental:
+
 = MC server starten met Ansible
 
 == Overzicht van dit labo
@@ -331,3 +339,7 @@ WantedBy=multi-user.target
 ----
 
 === Testen
+
+link:Verdiepen_in_Ansible.adoc[Terug]
+
+link:index.adoc[Overzicht]
