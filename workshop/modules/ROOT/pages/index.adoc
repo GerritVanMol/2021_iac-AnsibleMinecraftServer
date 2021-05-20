@@ -1,0 +1,43 @@
+= Workshop: een Minecraft server met Ansible
+
+// Laat onderstaande twee lijnen in je code staan op elke adoc pagina. Ze zorgen ervoor dat afbeeldingen zowel in de preview in Visual Studio Code als in de Antora build werken..
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
+
+== Doelstellingen
+
+* De doelgroep iets bijleren
+* Zelf iets bijleren
+
+// geef op wat de doelstellingen zijn in een opsomming
+
+== Benodigdheden
+
+* Ansible
+* Minecraft Server 
+* Enkele Ubuntu Linux VM's van op school (2 VM's / student)
+
+
+// geef op welke zaken nodig zijn...
+
+== Vereiste voorkennis
+
+* Een terminal/commandline kunnen gebruiken
+* Gebruik van VM's
+
+// als je verwacht dat iets op voorhand gekend is, neem je dat hier op...
+
+== Scenario
+* link:Intro_Project.adoc[Kennismaking]
+
+* link:vmware.adoc[Intro VM's]
+
+* link:AnsibleIntro.adoc.adoc[Intro Ansible]
+
+* link:Ansible_in_depth.adoc[Uitgebreid Ansible]
+
+* link:deployingMC.adoc[Minecraft deployen met Ansible ]
+
+* Extra uitbreiding
+* Gamer Time
+// wat is het scenario voor de workshop? Workshops zijn meest succesvol als je een écht doel probeert na te streven ipv een opeenvolging van opeenvolgende taakjes zonder afgelijnd doel...
