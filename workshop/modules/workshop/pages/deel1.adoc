@@ -1,0 +1,10 @@
+= Titel
+
+// Laat onderstaande twee lijnen in je code staan. Ze zorgen ervoor dat afbeeldingen zowel in de preview in Visual Studio Code als in de Antora build werken..
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
+
+
+// hier komt dan je inhoud, volledig opgemaakt in Asciidoc.
+
+

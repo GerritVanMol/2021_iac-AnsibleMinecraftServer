@@ -1,0 +1,7 @@
+name: workshop1
+title: Titel van de workshop
+version: '2021H2'
+nav:
+- modules/ROOT/nav.adoc
+- modules/workshop/nav.adoc
+
