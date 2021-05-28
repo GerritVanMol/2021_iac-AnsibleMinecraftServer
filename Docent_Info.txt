@@ -1,0 +1,13 @@
+Beste docent
+
+De meeste info om de workshop uit te voeren is aanwezig.
+
+Korte opmerkingen:
+
+Er wordt verwacht 2 VM's lokaal op te starten (2x ubuntu vmdk)
+De finale playbook is nog niet getest geweest, enkel theoretisch uitgewerkt.
+Deze mag natuurlijk wel getest worden.
+
+mvg
+
+Team 4
