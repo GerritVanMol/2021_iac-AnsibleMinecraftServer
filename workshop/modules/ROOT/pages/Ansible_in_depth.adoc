@@ -12,7 +12,7 @@ ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 ==== Werken met playbooks, plays en tasks
 Ansible playbooks zijn kort samengevat voorgeschreven code in een bestand. Vaak zijn dit `.yml` of `.ini` bestanden. Playbooks zorgen er voor dat bepaalde taken of code niet steeds opnieuw moeten geschreven worden om herhalende taken uit te voeren op één of meerdere machines. Het schrijven van `YAML` bestanden gebeurt met indentatie net zoals de programmeer taal python, meer over de `YAML` syntax kan je link:https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started/[hier] terug vinden.
 
-image:https://memegenerator.net/img/instances/65610099.jpg[ansible-meme]
+image::https://blogs.vmware.com/vmtn/files/2017/06/Screen-Shot-2017-06-13-at-2.37.59-PM.png[ansible-meme]
 
 ==== Wat is een playbook
 Playbooks zijn scripts die bestaan uit een oplijsting van commando's. Deze commando's worden doorgestuurd naar externe machines. Ansible playbooks bieden flexibiliteit en simpliciteit voor het configureren van één of meerdere machines. Op die manier moet men niet steeds handmatig herhalende taken uitvoeren. Men kan de inhoud van een playbook eerder aanzien als een configuratie opstlling dan dat ze geschreven is in een programmeertaal.
