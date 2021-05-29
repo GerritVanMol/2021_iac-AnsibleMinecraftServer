@@ -1,5 +1,5 @@
-name: workshop1
-title: Titel van de workshop
+name: Ansible
+title: Minecraft server met Ansible
 version: '2021H2'
 nav:
 - modules/ROOT/nav.adoc
