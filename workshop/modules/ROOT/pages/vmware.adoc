@@ -5,8 +5,10 @@
 :toc-title: Inhoudstafel
 :icons: font
 :experimental:
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 
-image:./images/vmware-logo.png[]
+image::vmware-logo.png[]
 
 = Wegwijs maken met de virtuele machines
 
@@ -53,31 +55,31 @@ Na het downloaden opent het automatisch de VMware setup, je klikt op next. Daarn
 == VMDK downloaden en 2 keer deployen
 Eerst en vooral gaan we de VDMK van school downloaden. Eens de VDMK is gedownload gaan we een virtuele machine aanmaken. Je klikt create a New Virtual Machine. Vervolgens klik je op de derde optie:
 
-image:./images/os-later.PNG[]
+image::os-later.PNG[]
 
 Je selecteert als os Linux en als versie Ubuntu.
  
-image:./images/linux.PNG[]
+image::linux.PNG[]
 
 Daarna selecteer je hoeveel Maximum disk size je wilt behouden. We laten het op de default staan Tot slot zie je een klein overzicht van alle configuraties dat je al hebt gedaan. Nu de vm is aangemaakt gaan we de VMDK toevoegen dit doen we door op de virtuele machine te klikken > edit virtual machine settings. Je komt dan op dit venstertje uit:
 
-image:./images/instellingen.PNG[]
+image::instellingen.PNG[]
  
 Klik je op add > Hard Disk
 
-image:./images/hard-disk.PNG[]
+image::hard-disk.PNG[]
  
 Er wordt aangeraden om SCSI te gebruiken deze gaan we dus behouden.
 
-image:./images/SCSI.PNG[]
+image::SCSI.PNG[]
  
 Dit is een heel belangrijke stap we kiezen voor Use an existing virtual disk anders kunnen we onze VMDK niet gebruiken.
 
-image:./images/existing-disk.PNG[]
+image::existing-disk.PNG[]
  
 Tot slot duiden we onze gedownloade VMDK aan en selecteren we die.
 
-image:./images/VMDK.PNG[]
+image::VMDK.PNG[]
  
 Nu maak je nog een ubuntu vm aan op dezelfde manier zoals we daarnet deden.
 
@@ -89,16 +91,16 @@ Nu onze vm’s goed zijn geconfigureerd kunnen we de vm’s opstarten. Je vult d
 
 Vervolgens ben je ingelogd op beide vm’s. We gaan 1 vm gebruiken als client en de andere als server. Het doel van dit gedeelte is om een ssh connectie te maken tussen de client en de server aan de hand van een keygen. Met het volgende commando maak je een public en private key aan op de server:
 
-image:./images/keygen.PNG[]
+image::keygen.PNG[]
  
 Aan de hand van de public key gaan we van de server naar de client een ssh verbinding maken zonder dat we het password opnieuw moeten invoeren. De X.X.X.X moet je vervangen met het ipadress van de client.
 
-image:./images/ssh-copy.PNG[]
+image::ssh-copy.PNG[]
  
 Tot slot kunnen we de ssh verbinding testen tussen de client en de server zonder we een code moeten gebruiken.
 
-image:./images/ssh.PNG[]
+image::ssh.PNG[]
 
-link:Intro_Project.adoc[Vorige]
+* xref:Intro_Project.adoc[Vorige]
 [.text-right]
-link:AnsibleIntro.adoc[Volgende]
+* xref:AnsibleIntro.adoc[Volgende]

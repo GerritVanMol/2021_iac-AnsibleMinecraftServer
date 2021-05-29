@@ -5,7 +5,8 @@
 :toc-title: Inhoudstafel
 :icons: font
 :experimental:
-
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 = MC server starten met Ansible
 
 ==== Overzicht van dit labo
@@ -341,6 +342,6 @@ WantedBy=multi-user.target
 === Testen
 Dit stuk wordt aangevuld eens we de VMDK hebben. 
 
-link:Ansible_in_depth.adoc[Vorige]
+* xref:Ansible_in_depth.adoc[Vorige]
 [.text-right]
-link:index.adoc[Overzicht]
+* xref:index.adoc[Overzicht]
