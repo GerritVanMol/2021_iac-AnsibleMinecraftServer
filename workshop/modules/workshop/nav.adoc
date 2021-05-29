@@ -1,17 +1,17 @@
 .Inleiding
-* xref:index.adoc[Home]
+* xref:index.adoc[Workshop overzicht]
 
 .Kennismaking
-* xref:Intro_Project.adoc[Kennismaking]
+* xref:Intro_Project.adoc[Minecraft server met ansible]
 
-.VMWare
+.VMware
 * xref:vmware.adoc[Virtual machines]
 
-.AnsibleIntro
-* xref:AnsibleIntro.adoc[Ansible intro]
+.Ansible intro
+* xref:AnsibleIntro.adoc[Ansible basics]
 
-.AnsibleInDetail
-* xref:Ansible_in_depth.adoc[Ansible in depth]
+.Ansible in detail
+* xref:Ansible_in_depth.adoc[Bredere kijk op Ansible]
 
 .Uitwerking
-* xref:deployingMC.adoc[Deploiment]
+* xref:deployingMC.adoc[Server starten]
