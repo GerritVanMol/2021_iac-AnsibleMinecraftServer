@@ -58,7 +58,7 @@ Op de onderstaande foto kan je zien hoe de playbooks en inventory files samen we
 
 image:./images/automation.png.png[]
 
-link:vmware.adoc[Vorige]
+* xref:vmware.adoc[Vorige]
 [.text-right]
-link:Ansible_in_depth.adoc[Volgende]
+* xref:Ansible_in_depth.adoc[Volgende]
 

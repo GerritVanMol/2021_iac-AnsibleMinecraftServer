@@ -1,3 +1,17 @@
-.WS1: inleiding en installatie
-* xref:deel1.adoc[Werkwijze]
+.Inleiding
+* xref:index.adoc[Home]
 
+.Kennismaking
+* xref:Intro_Project.adoc[Kennismaking]
+
+.VMWare
+* xref:vmware.adoc[Virtual machines]
+
+.AnsibleIntro
+* xref:AnsibleIntro.adoc[Ansible intro]
+
+.AnsibleInDetail
+* xref:Ansible_in_depth.adoc[Ansible in depth]
+
+.Uitwerking
+* xref:deployingMC.adoc[Deploiment]

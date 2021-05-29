@@ -1,11 +1,11 @@
 site:
   title: "Labo Infrastructure as code, Odisee UC"
   url: https://workshops.ikdoeict.be
-  start_page: 2021H2@Ansible::index.adoc
+  start_page: 2021H2@workshop1::index.adoc
 content:
   sources:
   - url: .
-    start_path: ROOT
+    start_path: workshop
     branches: HEAD
  
 ui:

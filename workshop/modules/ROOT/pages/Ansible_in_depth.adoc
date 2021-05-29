@@ -176,9 +176,9 @@ Een meer uitgebreide cheat sheet vindt je link:https://www.digitalocean.com/comm
 TIP: Als de Linux omgeving nog nieuw of onbekend is voor jou kan je altijd link:https://www.guru99.com/linux-commands-cheat-sheet.html[deze] Linux cheat sheet raadplegen. 
 
 
-link:AnsibleIntro.adoc[Vorige]
+* xref:AnsibleIntro.adoc[Vorige]
 [.text-right]
-link:deployingMC.adoc[Volgende]
+* xref:deployingMC.adoc[Volgende]
 
 
 
@@ -186,8 +186,8 @@ link:deployingMC.adoc[Volgende]
 '''
 (C) Gebaseerd op de informatie van:
 
-link:https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook#:~:text=An%20Ansible%C2%AE%20playbook%20is,make%20up%20an%20Ansible%20inventory.[Red Hat - Inventory documentation]
+* xref:https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook#:~:text=An%20Ansible%C2%AE%20playbook%20is,make%20up%20an%20Ansible%20inventory.[Red Hat - Inventory documentation]
 
-link:https://www.guru99.com/ansible-tutorial.html[guru99 - Ansible for beginners]
+* xref:https://www.guru99.com/ansible-tutorial.html[guru99 - Ansible for beginners]
 
-link:https://devops.stackexchange.com/questions/9832/ansible-whats-the-difference-between-task-role-play-and-playbook?newreg=172f1db84ee94cb493f95b4b631ae148[Stackexchange - tasks, play, roles, playbook]
+* xref:https://devops.stackexchange.com/questions/9832/ansible-whats-the-difference-between-task-role-play-and-playbook?newreg=172f1db84ee94cb493f95b4b631ae148[Stackexchange - tasks, play, roles, playbook]

@@ -1,2 +1,19 @@
 .Inleiding
-* xref:index.adoc[]
+* xref:index.adoc[Home]
+
+.Kennismaking
+* xref:Intro_Project.adoc[Kennismaking]
+
+.VMWare
+* xref:vmware.adoc[Virtual machines]
+
+.AnsibleIntro
+* xref:AnsibleIntro.adoc[Ansible intro]
+
+.AnsibleInDetail
+* xref:Ansible_in_depth.adoc[Ansible in depth]
+
+.Uitwerking
+* xref:deployingMC.adoc[Deploiment]
+
+

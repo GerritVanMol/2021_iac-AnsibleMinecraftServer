@@ -28,15 +28,15 @@ ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 // als je verwacht dat iets op voorhand gekend is, neem je dat hier op...
 
 == Scenario
-* link:Intro_Project.adoc[Kennismaking]
+* xref:Intro_Project.adoc[Kennismaking]
 
-* link:vmware.adoc[Intro VM's]
+* xref:vmware.adoc[Intro VM's]
 
-* link:AnsibleIntro.adoc.adoc[Intro Ansible]
+* xref:AnsibleIntro.adoc.adoc[Intro Ansible]
 
-* link:Ansible_in_depth.adoc[Uitgebreid Ansible]
+* xref:Ansible_in_depth.adoc[Uitgebreid Ansible]
 
-* link:deployingMC.adoc[Minecraft deployen met Ansible ]
+* xref:deployingMC.adoc[Minecraft deployen met Ansible ]
 
 * Extra uitbreiding
 * Gamer Time
