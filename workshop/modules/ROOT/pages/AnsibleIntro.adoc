@@ -7,7 +7,7 @@
 :experimental:
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
-image:ansible.png[]
+image::ansible.png[]
 
 = Intro to Ansible
 Lucas De Boeck <lucas.deboeck@odisee.student.be>

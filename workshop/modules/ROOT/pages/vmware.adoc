@@ -8,7 +8,7 @@
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 
-image:vmware-logo.png[]
+image::vmware-logo.png[]
 
 = Wegwijs maken met de virtuele machines
 
@@ -91,15 +91,15 @@ Nu onze vm’s goed zijn geconfigureerd kunnen we de vm’s opstarten. Je vult d
 
 Vervolgens ben je ingelogd op beide vm’s. We gaan 1 vm gebruiken als client en de andere als server. Het doel van dit gedeelte is om een ssh connectie te maken tussen de client en de server aan de hand van een keygen. Met het volgende commando maak je een public en private key aan op de server:
 
-image:keygen.PNG[]
+image::keygen.PNG[]
  
 Aan de hand van de public key gaan we van de server naar de client een ssh verbinding maken zonder dat we het password opnieuw moeten invoeren. De X.X.X.X moet je vervangen met het ipadress van de client.
 
-image:ssh-copy.PNG[]
+image::ssh-copy.PNG[]
  
 Tot slot kunnen we de ssh verbinding testen tussen de client en de server zonder we een code moeten gebruiken.
 
-image:ssh.PNG[]
+image::ssh.PNG[]
 
 * xref:Intro_Project.adoc[Vorige]
 [.text-right]
