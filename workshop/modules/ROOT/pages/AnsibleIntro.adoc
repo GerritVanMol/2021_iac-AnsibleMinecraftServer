@@ -7,7 +7,7 @@
 :experimental:
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
-image:./images/ansible.png[]
+image:ansible.png[]
 
 = Intro to Ansible
 Lucas De Boeck <lucas.deboeck@odisee.student.be>
@@ -58,7 +58,7 @@ Om eenvoudig configuraties te maken gebruikt ansible 'playbooks'. In deze playbo
 
 Op de onderstaande foto kan je zien hoe de playbooks en inventory files samen werken. Ansible leest de inventory en paybooks en voert dan via een ssh verbinding de nodige taken uit. 
 
-image:./images/automation.png.png[]
+image:automation.png.png[]
 
 * xref:vmware.adoc[Vorige]
 [.text-right]
