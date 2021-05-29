@@ -5,7 +5,8 @@
 :toc-title: Inhoudstafel
 :icons: font
 :experimental:
-
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 = MC server starten met Ansible
 
 ==== Overzicht van dit labo

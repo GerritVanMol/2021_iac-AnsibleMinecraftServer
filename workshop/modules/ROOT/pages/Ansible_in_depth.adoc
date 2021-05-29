@@ -5,6 +5,8 @@
 :toc-title: Inhoudstafel
 :icons: font
 :experimental:
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 = Een bredere kijk op Ansible
 
 ==== Werken met playbooks, plays en tasks
