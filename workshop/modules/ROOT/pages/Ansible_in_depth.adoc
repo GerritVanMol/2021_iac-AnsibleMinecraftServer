@@ -188,7 +188,7 @@ TIP: Als de Linux omgeving nog nieuw of onbekend is voor jou kan je altijd link:
 '''
 (C) Gebaseerd op de informatie van:
 
-* xref:https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook#:~:text=An%20Ansible%C2%AE%20playbook%20is,make%20up%20an%20Ansible%20inventory.[Red Hat - Inventory documentation]
+* xref:https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook[Red Hat - Inventory documentation]
 
 * xref:https://www.guru99.com/ansible-tutorial.html[guru99 - Ansible for beginners]
 
