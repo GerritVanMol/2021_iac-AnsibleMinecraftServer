@@ -5,12 +5,14 @@
 :toc-title: Inhoudstafel
 :icons: font
 :experimental:
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 = Een bredere kijk op Ansible
 
 ==== Werken met playbooks, plays en tasks
 Ansible playbooks zijn kort samengevat voorgeschreven code in een bestand. Vaak zijn dit `.yml` of `.ini` bestanden. Playbooks zorgen er voor dat bepaalde taken of code niet steeds opnieuw moeten geschreven worden om herhalende taken uit te voeren op één of meerdere machines. Het schrijven van `YAML` bestanden gebeurt met indentatie net zoals de programmeer taal python, meer over de `YAML` syntax kan je link:https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started/[hier] terug vinden.
 
-image::https://memegenerator.net/img/instances/65610099.jpg[ansible-meme]
+image::https://blogs.vmware.com/vmtn/files/2017/06/Screen-Shot-2017-06-13-at-2.37.59-PM.png[ansible-meme]
 
 ==== Wat is een playbook
 Playbooks zijn scripts die bestaan uit een oplijsting van commando's. Deze commando's worden doorgestuurd naar externe machines. Ansible playbooks bieden flexibiliteit en simpliciteit voor het configureren van één of meerdere machines. Op die manier moet men niet steeds handmatig herhalende taken uitvoeren. Men kan de inhoud van een playbook eerder aanzien als een configuratie opstlling dan dat ze geschreven is in een programmeertaal.
@@ -176,9 +178,9 @@ Een meer uitgebreide cheat sheet vindt je link:https://www.digitalocean.com/comm
 TIP: Als de Linux omgeving nog nieuw of onbekend is voor jou kan je altijd link:https://www.guru99.com/linux-commands-cheat-sheet.html[deze] Linux cheat sheet raadplegen. 
 
 
-link:AnsibleIntro.adoc[Vorige]
+* xref:AnsibleIntro.adoc[Vorige]
 [.text-right]
-link:deployingMC.adoc[Volgende]
+* xref:deployingMC.adoc[Volgende]
 
 
 
@@ -186,8 +188,8 @@ link:deployingMC.adoc[Volgende]
 '''
 (C) Gebaseerd op de informatie van:
 
-link:https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook#:~:text=An%20Ansible%C2%AE%20playbook%20is,make%20up%20an%20Ansible%20inventory.[Red Hat - Inventory documentation]
+* xref:https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook[Red Hat - Inventory documentation]
 
-link:https://www.guru99.com/ansible-tutorial.html[guru99 - Ansible for beginners]
+* xref:https://www.guru99.com/ansible-tutorial.html[guru99 - Ansible for beginners]
 
-link:https://devops.stackexchange.com/questions/9832/ansible-whats-the-difference-between-task-role-play-and-playbook?newreg=172f1db84ee94cb493f95b4b631ae148[Stackexchange - tasks, play, roles, playbook]
+* xref:https://devops.stackexchange.com/questions/9832/ansible-whats-the-difference-between-task-role-play-and-playbook?newreg=172f1db84ee94cb493f95b4b631ae148[Stackexchange - tasks, play, roles, playbook]
