@@ -1,0 +1,7 @@
+---
+- name: Deploy MC server
+  hosts: 
+    mcservers
+  become: true
+  roles:
+   - mc_deployment

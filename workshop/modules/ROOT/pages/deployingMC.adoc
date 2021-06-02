@@ -29,13 +29,11 @@ Eens aangelogd zullen we de machine up to date brengen, dit doen we door middel 
 ----
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt install vim
 ----
 Nu gaan we Ansible zelf installeren via volgende commands:
 [source, bash]
 ----
 sudo apt-add-repository ppa:ansible/ansible
-sudo apt-get update
 sudo apt-get install ansible -y
 ----
 Ansible heeft ook nog een python interpreter nodig om de modules te kunnen uitvoeren:
@@ -102,18 +100,35 @@ vim playbook.yml
   role:
     mc_deployment
 ----
+Nu maken we nog een directory waar we de variabelen zullen bijhouden over de server.
+[source, bash]
+----
+mkdir group_vars
+cd group_vars
+touch mcserver.yml
+vim mcserver.yml
+----
+[source, YAML]
+----
+---
+ansible_user: ubuntu
+ansible_connection: ssh
+ansible_become_pass: Azerty123
+----
 Onze structuur zou er op dit moment als volgt moeten uitzien: (controleerbaar met ls)
 [source]
 ----
 playbook.yml
-mc_deployment.yml
+inventory.yml
 roles
   mc_deployment
+group_vars
+  mcservers.yml
 ----
 We testen even kort of onze opstelling vrij is van fouten:
 [source, bash]
 ----
-ansible-playbook playbook.yml
+ansible-playbook playbook.yml -i inventory.yml
 ----
 Als de playbook uitgevoerd wordt zonder fouten is dit een succes! Als er fouten zijn meldt dit even en dan komen we kijken.
 
@@ -123,24 +138,26 @@ We navigeren met vim naar de task folder van onze role, hier kunnen we in main.y
 ----
 vim roles/mc_deployment/task/main.yml
 ----
-Onze eerste task is het updaten van de yum repository. Dit doen we zo:
+Onze eerste task is het updaten van de apt repository. Dit doen we zo:
 [source, YAML]
 ----
 ---
-- name: Update yum
-  yum:
-    update_cache: yes
-    state: latest
+- name: Update apt repo
+  apt: 
+    update_cache=yes 
+    force_apt_get=yes 
+    cache_valid_time=3600
 ----
 Sla dit op en test even of dit werkt met het uitvoer commando
 ----
-ansible-playbook playbook.yml
+ansible-playbook playbook.yml -i inventory.yml
 ----
 Als dit correct werkt gaan we door naar de volgende tasks.
-In deze task installeren we java JKD
+In deze task installeren we java JKD. 
+Ter verduidelijking, al deze tasks komen in dezelfde file. Blijf ze dus maar gewoon onder elkaar schrijven.
 [source, YAML]
 ----
-- name: java
+- name: Install java
   package:
     name: "openjdk-8-jdk"
     state: present
@@ -148,7 +165,7 @@ In deze task installeren we java JKD
 Nu maken we een nieuwe user die MC zal beheren
 [source, YAML]
 ----
-- name: minecraft user
+- name: Minecraft user
   user:
     name: minecraft
     shell: /sbin/nologin
@@ -165,7 +182,6 @@ We maken de folders aan voor onze files
     group: minecraft
   with_items:
     - /opt/minecraft
-    - /opt/minecraft/backups
     - /opt/minecraft/server
     - /opt/minecraft/tmp
 ----
@@ -305,7 +321,7 @@ Daarin kopiëren we deze text:
 ----
 view-distance=10
 max-build-height=256
-gamemode=creative
+gamemode=survival
 server-port=25565
 query.port=25565
 allow-nether=true
@@ -317,7 +333,7 @@ prevent-proxy-connections=false
 generator-settings=
 resource-pack=
 level-name=Minecraft World
-motd=Welcome to Minecraft!
+motd=Gamer Time!
 player-idle-timeout=0
 spawn-protection=16
 online-mode=true
@@ -326,8 +342,8 @@ force-gamemode=false
 hardcore=false
 white-list=false
 broadcast-console-to-ops=true
-pvp=false
-max-players=10
+pvp=true
+max-players=20
 generate-structures=true
 spawn-npcs=true
 spawn-animals=true
@@ -361,14 +377,31 @@ ProtectSystem=full
 PrivateDevices=true
 NoNewPrivileges=true
 WorkingDirectory=/opt/minecraft/server
-ExecStart=/usr/bin/java -Xmx{{ mc_memory }}M -Xms{{ mc_memory }}M -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -jar server.jar nogui
+ExecStart=/usr/bin/java -Xmx{{ 512 }}M -Xms{{ 512 }}M -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -jar server.jar nogui
 
 [Install]
 WantedBy=multi-user.target
 ----
 
 === Testen
-Dit stuk wordt aangevuld eens we de VMDK hebben. 
+Nu kunnen we onze playbook gaan uitvoeren.
+[source, bash]
+----
+ansible-playbook playbook.yml -i inventory.yml
+----
+Indien er errors voorkomen, meld dit even.
+Wanneer de playbook perfect uitvoert kunnen we eens proberen verbinden met Minecraft.
+Dit doen we door in de game via multiplayer onze nieuwe server te selecteren.
+
+=== Uitbreiding
+De live output van de server weergeven.
+Dit kunnen we berijken door op onze server instantie het volgende commando in te geven:
+[source, bash]
+----
+sudo journalctl -u minecraft -f
+----
+Nu kunnne we via de server opvolgen wat er gebeurt in onze server.
+Indien je dit graag op de control host ziet kan je verbinden via ssh naar de server en zo het commando uitvoeren.
 
 * xref:Ansible_in_depth.adoc[Vorige]
 [.text-right]
