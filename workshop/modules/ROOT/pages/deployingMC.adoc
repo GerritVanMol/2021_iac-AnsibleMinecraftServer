@@ -384,8 +384,13 @@ WantedBy=multi-user.target
 ----
 
 === Testen
-Dit stuk wordt aangevuld eens we de VMDK hebben. 
-
+Nu kunnen we onze playbook gaan uitvoeren.
+[source, bash]
+----
+ansible-playbook playbook.yml -i inventory.yml
+----
+Indien er errors voorkomen, meld dit even.
+Wanneer de playbook perfect uitvoert kunnen we 
 * xref:Ansible_in_depth.adoc[Vorige]
 [.text-right]
 * xref:index.adoc[Overzicht]
