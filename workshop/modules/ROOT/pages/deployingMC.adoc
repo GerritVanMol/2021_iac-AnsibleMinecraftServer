@@ -29,7 +29,6 @@ Eens aangelogd zullen we de machine up to date brengen, dit doen we door middel 
 ----
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt install vim
 ----
 Nu gaan we Ansible zelf installeren via volgende commands:
 [source, bash]
@@ -102,18 +101,35 @@ vim playbook.yml
   role:
     mc_deployment
 ----
+Nu maken we nog een directory waar we de variabelen zullen bijhouden over de server.
+[source, bash]
+----
+mkdir group_vars
+cd group_vars
+touch mcserver.yml
+vim mcserver.yml
+----
+[source, YAML]
+----
+---
+ansible_user: ubuntu
+ansible_connection: ssh
+ansible_become_pass: Azerty123
+----
 Onze structuur zou er op dit moment als volgt moeten uitzien: (controleerbaar met ls)
 [source]
 ----
 playbook.yml
-mc_deployment.yml
+inventory.yml
 roles
   mc_deployment
+group_vars
+  mcservers.yml
 ----
 We testen even kort of onze opstelling vrij is van fouten:
 [source, bash]
 ----
-ansible-playbook playbook.yml
+ansible-playbook playbook.yml -i inventory.yml
 ----
 Als de playbook uitgevoerd wordt zonder fouten is dit een succes! Als er fouten zijn meldt dit even en dan komen we kijken.
 
