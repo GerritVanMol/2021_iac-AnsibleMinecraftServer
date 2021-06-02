@@ -103,7 +103,7 @@ vim playbook.yml
     mc_deployment
 ----
 Onze structuur zou er op dit moment als volgt moeten uitzien: (controleerbaar met ls)
-[source, bash]
+[source]
 ----
 playbook.yml
 mc_deployment.yml
@@ -111,6 +111,7 @@ roles
   mc_deployment
 ----
 We testen even kort of onze opstelling vrij is van fouten:
+[source, bash]
 ----
 ansible-playbook playbook.yml
 ----
