@@ -9,17 +9,17 @@
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 = Een bredere kijk op Ansible
 
-==== Werken met playbooks, plays en tasks
+=== Werken met playbooks, plays en tasks
 Ansible playbooks zijn kort samengevat voorgeschreven code in een bestand. Vaak zijn dit `.yml` of `.ini` bestanden. Playbooks zorgen er voor dat bepaalde taken of code niet steeds opnieuw moeten geschreven worden om herhalende taken uit te voeren op één of meerdere machines. Het schrijven van `YAML` bestanden gebeurt met indentatie net zoals de programmeer taal python, meer over de `YAML` syntax kan je link:https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started/[hier] terug vinden.
 
 image::https://blogs.vmware.com/vmtn/files/2017/06/Screen-Shot-2017-06-13-at-2.37.59-PM.png[ansible-meme]
 
-==== Wat is een playbook
-Playbooks zijn scripts die bestaan uit een oplijsting van commando's. Deze commando's worden doorgestuurd naar externe machines. Ansible playbooks bieden flexibiliteit en simpliciteit voor het configureren van één of meerdere machines. Op die manier moet men niet steeds handmatig herhalende taken uitvoeren. Men kan de inhoud van een playbook eerder aanzien als een configuratie opstlling dan dat ze geschreven is in een programmeertaal.
+=== Wat is een playbook
+Playbooks zijn scripts die bestaan uit een oplijsting van commando's. Deze commando's worden doorgestuurd naar externe of lokale machines voor het opbouwen van een geautomatiseerd infrastructuur. Ansible playbooks bieden flexibiliteit en simpliciteit voor het configureren van één of meerdere machines. Op die manier moet men niet steeds handmatig herhalende taken uitvoeren. Men kan de inhoud van een playbook eerder aanzien als een configuratie opstelling dan dat ze geschreven is in een programmeertaal.
 
 Maar wat zit er nu echt in een playbook?
-Een `playbook` is eigenlijk een lijst van `plays`. Lijsten staan het hoogste in de hirachy van een playbook. Een play wordt gedefinierd met `import_playbook`, deze importeert een lijst van plays afkomstig uit een ander bestand (meestal een rol). De import zorgt er voor dat de werk omgeving overzichtelijk blijft. Het is ook mogelijk om meteen alle plays in playbook te defineren maar zoals al eerder vermeld is dit on overzichtelijk. Een playbook bestaat dus uit meerdere `plays` en een `play` bestaat op zijn beurt uit meerdere `tasks`.
-
+Een `playbook` bestaat een uit één of meerdere `plays` en een play bestaat op zijn beurt uit één of meerdere `tasks`. Ansible playbooks zijn lijsten van taken die automatisch worden uitgevoerd op een of meerdere hosts. Plays worden gedefinieerd (starten) met `name`
+en krijgt vervolgens een naam/tag met beschrijving tot wat die bepaalde play zal gaan behandelen.
 
 
 De naam van een `playbook` is het enige dat kan worden opgeroepen in een commando met het `ansible-playbook` key-word. 
@@ -28,13 +28,15 @@ TIP: **Een playbook uitvoeren kan men met `ansible-playbook naam_van_playbook.ym
 
 
 
-==== Wat is een play
+=== Wat is een play
 Plays zijn elementen die `roles` verbinden met een host (server) waarop ze uitgevoerd moeten worden. Op die manier weet Ansible welke hosts er worden beïnvloed en hoe. Een play kan één of meerdere `tasks` bevatten.
+Het `host` keyword in een play vermeld waar/op welke machine de tasks zullen worden uitgevoerd, de hostnaam dat gelinked is aan het IP-adres (vermeld in de inventory file) zal daar dus worden vermeld.
+Dan zijn er nog `vars` deze definieeren link:https://www.tutorialspoint.com/computer_programming/computer_programming_variables.htm[variablen] zoals je die misschien kent van een programmeer taal zijn ze hier vrij gelijkaardig.  
 
 
 
-==== Wat is een task
-Wat zijn `tasks` dan nog? Een task is/doet eigenlijk niets meer dan een Ansible module aanspreken. Deze weet hoe dan ook niet waar of op welke host hij wordt opgeroepen. Maar zoals al vermeld is dat de play zijn taak.
+=== Wat is een task
+Wat zijn `tasks` dan nog? Een task is/doet eigenlijk niets meer dan een Ansible module aanspreken. Deze weet hoe dan ook niet waar of op welke host hij wordt opgeroepen. Maar zoals al vermeld is dat de taak van een play.
 
 Standaard wordt elke taak op volgorde van definiëring uitgevoerd. Dit op elke machine dat werd vermeld door het `hosts` key-word. Eenmaal een taak is uitgevoerd op de doel machine(s) gaat Ansible door naar de volgende taak.
 Indien een taak faalt op een host, worden voor die bepaalde host geen taken meer uitgevoerd uit de playbook (om verdere conflicten te vermeiden).
@@ -103,7 +105,7 @@ Figuur 2: playbook rollen structuur
 In de inventory file worden alle link:https://nl.wikipedia.org/wiki/Node_(informatica)[nodes] tot een groep toegewezen en krijgen ze elk hun uniek ip adres mee. Op die is er een duidelijke verdeling en kunnen groepen (meerdere nodes) worden aangesproken in een zelfde play zonder dat we alle nodes nogmaals appart moeten gaan opsommen. Een inventory file kan opnieuw geschreven worden in `YAML` of `ini` fromaat. Al noemen we het belangrijkste bestand in de Ansible opstelling de "inventory", krijgt het in productie de naam `hosts`. Omdat we zoals eerder vermeld de nodes/hosts daar zullen vermelden, met welk ip elke host is gekoppeld en zeggen in welke groep ze zitten. Bij installatie van Ansible kan je de inventory standaard in `/etc/ansible/hosts` terugvinden. 
 
 Een basis inventory in `ini` formaat:
-[source, bash, indent=1]
+[source, INI, indent=1]
 ----
 [all.hosts]
 mail.example.com=null
@@ -133,7 +135,7 @@ ansible_port=22
 
 Een basis inventory in `YAML` formaat:
 
-[source, bash, indent=1]
+[source, YAML, indent=1]
 ----
 ---
 all:
