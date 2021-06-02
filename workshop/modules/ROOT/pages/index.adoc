@@ -38,6 +38,4 @@ ifdef::env-github,env-browser,env-vscode[:imagesprefix: ./../assets/images/]
 
 * xref:deployingMC.adoc[Minecraft deployen met Ansible ]
 
-* Extra uitbreiding
-* Gamer Time
 // wat is het scenario voor de workshop? Workshops zijn meest succesvol als je een écht doel probeert na te streven ipv een opeenvolging van opeenvolgende taakjes zonder afgelijnd doel...
