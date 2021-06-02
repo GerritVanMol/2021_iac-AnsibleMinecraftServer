@@ -390,7 +390,19 @@ Nu kunnen we onze playbook gaan uitvoeren.
 ansible-playbook playbook.yml -i inventory.yml
 ----
 Indien er errors voorkomen, meld dit even.
-Wanneer de playbook perfect uitvoert kunnen we 
+Wanneer de playbook perfect uitvoert kunnen we eens proberen verbinden met Minecraft.
+Dit doen we door in de game via multiplayer onze nieuwe server te selecteren.
+
+=== Uitbreiding
+De live output van de server weergeven.
+Dit kunnen we berijken door op onze server instantie het volgende commando in te geven:
+[source, bash]
+----
+sudo journalctl -u minecraft -f
+----
+Nu kunnne we via de server opvolgen wat er gebeurt in onze server.
+Indien je dit graag op de control host ziet kan je verbinden via ssh naar de server en zo het commando uitvoeren.
+
 * xref:Ansible_in_depth.adoc[Vorige]
 [.text-right]
 * xref:index.adoc[Overzicht]
