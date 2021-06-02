@@ -103,7 +103,7 @@ Figuur 2: playbook rollen structuur
 In de inventory file worden alle link:https://nl.wikipedia.org/wiki/Node_(informatica)[nodes] tot een groep toegewezen en krijgen ze elk hun uniek ip adres mee. Op die is er een duidelijke verdeling en kunnen groepen (meerdere nodes) worden aangesproken in een zelfde play zonder dat we alle nodes nogmaals appart moeten gaan opsommen. Een inventory file kan opnieuw geschreven worden in `YAML` of `ini` fromaat. Al noemen we het belangrijkste bestand in de Ansible opstelling de "inventory", krijgt het in productie de naam `hosts`. Omdat we zoals eerder vermeld de nodes/hosts daar zullen vermelden, met welk ip elke host is gekoppeld en zeggen in welke groep ze zitten. Bij installatie van Ansible kan je de inventory standaard in `/etc/ansible/hosts` terugvinden. 
 
 Een basis inventory in `ini` formaat:
-[source, bash, indent=1]
+[source, INI, indent=1]
 ----
 [all.hosts]
 mail.example.com=null
@@ -133,7 +133,7 @@ ansible_port=22
 
 Een basis inventory in `YAML` formaat:
 
-[source, bash, indent=1]
+[source, YAML, indent=1]
 ----
 ---
 all:
