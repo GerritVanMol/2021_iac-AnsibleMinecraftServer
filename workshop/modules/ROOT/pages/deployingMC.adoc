@@ -58,7 +58,8 @@ touch inventory.yml
 vim inventory.yml
 ----
 Hierin beschrijven we de infrastructuur en hun IP's.
-Om te beginnen werken in vim moeten we op insert drukken dat is de 'i' toets. 
+Om te beginnen werken in vim moeten we in insert mode gaan.
+Dit doen we door op de 'i' toets te drukken. 
 [source, YAML]
 ----
 ---
@@ -73,7 +74,8 @@ Om te beginnen werken in vim moeten we op insert drukken dat is de 'i' toets.
           server:
             ansible_host: x.x.x.x
 ----
-Om het aangepaste bestand op te slaan en af te sluiten met vim gebruiken we ":wq".
+Om het aangepaste bestand op te slaan en af te sluiten moeten we eerst op escape drukken.
+Nu zitten we terug in command mode. Nu doen we het ":wq" commando (write-quit) en vervolgens enter.
 De volgende stap is de role aanmaken. We maken een subfolder genaamd roles met daarin een role:
 [source, bash]
 ----
@@ -85,7 +87,7 @@ cd ..
 Nu zouden we terug in de werkmap ansible-project moeten zitten.
 In deze stap maken we de playbook aan
 Eerst maken we een nieuwe playbook en we schrijven daarin de play: 
-(Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
+(Opnieuw start bewerken met 'i' en verlaat vim met escape, ":wq" en enter om op te slaan)
 [source, bash]
 ----
 touch playbook.yml
@@ -311,7 +313,7 @@ We keren terug naar onze werkmap
 cd ~/ansible-project
 ----
 Onze server heeft nog een properties bestand nodig. Hieruit kunnen de instellingen van de server gehaald worden.
-We maken dus eerst een nieuw bestand aan met de nodige properties: (Opnieuw start bewerken met 'i' en verlaat vim met ":wq" om op te slaan)
+We maken dus eerst een nieuw bestand aan met de nodige properties: (Opnieuw start bewerken met 'i' en verlaat vim met escape, ":wq" en enter om op te slaan)
 [source, bash]
 ----
 vim server.properties
