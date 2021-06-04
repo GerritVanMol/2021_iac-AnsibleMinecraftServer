@@ -91,13 +91,35 @@ Nu onze vm’s goed zijn geconfigureerd kunnen we de vm’s opstarten. Je vult d
 
 Vervolgens ben je ingelogd op beide vm’s. We gaan 1 vm gebruiken als client en de andere als server. Het doel van dit gedeelte is om een ssh connectie te maken tussen de client en de server aan de hand van een keygen. Met het volgende commando maak je een public en private key aan op de server:
 
+[source bash]
+----
+ssh-keygen
+----
+
+Het wachtwoord mag je leeg laten door op enter te duwen.
+
 image::keygen.PNG[]
  
-Aan de hand van de public key gaan we van de server naar de client een ssh verbinding maken zonder dat we het password opnieuw moeten invoeren. De X.X.X.X moet je vervangen met het ipadress van de client.
+Aan de hand van de public key gaan we van de server naar de client een ssh verbinding maken zonder dat we het password opnieuw moeten invoeren. De X.X.X.X moet je vervangen met het ipadress van de client. Dit kan je vinden door het volgende commando in te voeren:
+
+[source bash]
+----
+ip addr show
+----
+
+[source bash]
+----
+ssh-copy-id -i ~/.ssh/id_rsa.pub ubuntu@x.x.x.x
+----
 
 image::ssh-copy.PNG[]
  
 Tot slot kunnen we de ssh verbinding testen tussen de client en de server zonder we een code moeten gebruiken.
+
+[source bash]
+----
+ssh ubuntu@x.x.x.x
+----
 
 image::ssh.PNG[]
 
