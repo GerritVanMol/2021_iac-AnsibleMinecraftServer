@@ -45,12 +45,12 @@ Indien een taak faalt op een host, worden voor die bepaalde host geen taken meer
 === Roles en handlers
 
 ==== Roles
-Een rol is een appart deel in Ansible en wordt niet gedefinieerd in een palybook. Roles hebben hun eigen sub-mappen onder de map `roles`. Omdat in meest van de gevallen niet alle `hosts` dezelfde configuratie nodig hebben is het vaak beter om deze op te splitsen. Hier komen `roles` in de kijker. Zij zorgen ervoor dat alles geordend blijft en dat elk deel bijvoorbeeld variabelen (`vars`) in een apart mapje worden gedefinieerd. Als men bijvoorbeeld een `task` uitvoert zal er automatisch worden gezocht achter de variabele in het bestand van de `vars` map. Zoals een `play` definieert een rol de `tasks` en `handlers`. Hoe dan ook, rollen bepalen niet op welke hosts de rol zal worden uitgevoerd. Een referentie naar een rol zal dus steeds plaats vinden in een play.
+Een rol is een appart deel in Ansible en wordt niet gedefinieerd in een playbook. Roles hebben hun eigen sub-mappen onder de map `roles`. Omdat in meest van de gevallen niet alle `hosts` dezelfde configuratie nodig hebben is het vaak beter om deze op te splitsen. Hier komen `roles` in de kijker. Zij zorgen ervoor dat alles geordend blijft en dat elk deel bijvoorbeeld variabelen (`vars`) in een apart mapje worden gedefinieerd. Als men bijvoorbeeld een `task` uitvoert zal er automatisch worden gezocht achter de variabele in het bestand van de `vars` map. Zoals een `play` definieert een rol de `tasks` en `handlers`. Hoe dan ook, rollen bepalen niet op welke hosts de rol zal worden uitgevoerd. Een referentie naar een rol zal dus steeds plaats vinden in een play.
 
 ==== Handlers
 `Tasks` en `handlers` zijn eigenlijk bijna identiek. Het enige verschil met handlers is dat ze enkel worden uitgevoerd bij een oproep door het `notify` key-word. Hoe dan ook zal deze notify enkel worden doorgevoerd indien er veranderingen zijn waargenomen. Dit is bijvoorbeeld handig wanner men aanpassingen heeft gemaakt in de firewall service, en om deze aanpassingen door te voeren moet men de service herstarten.
 
-=== Hirarchy/mappen structuur
+=== Hiërarchie / mappenstructuur
 Om je een beeld te geven van een basis mappen structuur in Anisble kan je refereren naar onderstaande illustratie:
 
 

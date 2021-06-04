@@ -38,7 +38,7 @@ Ansible is een tool waar je IT-processen mee kunt automatiseren. Het is een DevO
 
 == En nu, aan de slag!
 
-Nu we de voorbereidingen hebben getroffen en we beschikken over de nodige kennis, over hoe het project zal worden opgebouwd, kunnen we aan de slag gaan. We zullen jullie aan de hand van verschillende hoofdstukken uitleggen hoe we juist een Minecraft server kunnen realiseren aan de hand van een virtuele machine die gebruikt maakt van Ansible. 
+Nu we de voorbereidingen hebben getroffen, we beschikken over de nodige kennis en over hoe het project zal worden opgebouwd, kunnen we aan de slag gaan. We zullen jullie aan de hand van verschillende hoofdstukken uitleggen hoe we juist een Minecraft server kunnen realiseren aan de hand van een virtuele machine die gebruikt maakt van Ansible. 
 
 * xref:index.adoc[Overzicht]
 [.text-right]
