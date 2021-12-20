@@ -1,5 +1,5 @@
-Ansibel minecraft server deployment.
+## Ansibel minecraft server deployment.
 
-In the ROOT folder you can follow the steps to recreate the environment.
+In the workshop/modules/ROOT folder you can follow the steps to recreate the environment.
 
 DOCUMENTATION IS IN DUTCH => Google translator (or alternative) is adviced.
