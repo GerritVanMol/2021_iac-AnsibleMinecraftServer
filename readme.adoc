@@ -1,39 +1,5 @@
-= Workshop
+Ansibel minecraft server deployment.
 
+In the ROOT folder you can follow the steps to recreate the environment.
 
-== De opbouw
-
-Deze workshop is opgebouwd aan de hand van https://asciidoctor.org/docs/[Ascidoc], en wordt gebouwd met https://antora.org[Antora]. 
-Zoals in het schema hieronder getoond wordt, zullen verschillende bronnen (eventueel in verschillende repositories) gecombineerd worden tot één website. Hoe die er uit zal zien wordt bepaald door een UI component, die eventueel ook in een aparte repository bewaard wordt.
-
-Op die manier heb je een heel flexibel en modulair systeem, dat voornamelijk bedoeld is voor technische documentatie.
-
-[ditaa, "asciidoctor-diagram-process"]
-....
-
-+--------------+                         +-----------------+      /-----------------\
-|workshop      |------------------------>| antora build    |----->| website         |
-+--------------+                    +--->|                 |      \-----------------/
-                                    |    +-----------------+
-+--------------------+              |           ^
-|evt andere modules  |--------------+           |
-+--------------------+                          |
-                                                |
-                                                |
-                                                |
-+--------------+                                |
-|default ui    |--------------------------------+
-+--------------+
-
-....
-
-== Lokaal builden en de CI/CD config testen
-
-Om lokaal te builden of om de gitlab-ci te testen zonder te pushen naar de originele repository, kan je lokaal de gitlab runner installeren (zonder te registreren in Gitlab!) en volgend commando gebruiken:
-
-[source, bash]
-----
-sudo gitlab-runner exec docker build
-----
-
-Als alternatief kan je uiteraard ook gewoon Antora installeren, en het rechtstreeks uitvoeren in je terminal. 
+DOCUMENTATION IS IN DUTCH => Google translator (or alternative) is adviced.
